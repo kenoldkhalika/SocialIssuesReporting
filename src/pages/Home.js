@@ -1,6 +1,7 @@
 import React from "react";
 import './Home.css';
 import fireDb from "firebase";
+import IssueDetails from './IssueDetails';
 import { Link } from "react-router-dom";
 
 
@@ -13,7 +14,6 @@ class App extends React.Component {
     //fireDb.initializeApp(config)
     this.state = {
       issues: []
-      
     };
    
   }
@@ -69,6 +69,7 @@ class App extends React.Component {
     const { issues } = this.state;
     return (
       <React.Fragment>
+        
         <div className="container">
           <div className="row">
             

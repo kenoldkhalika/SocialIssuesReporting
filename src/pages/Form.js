@@ -1,5 +1,6 @@
 import React from "react";
 import fireDb from "firebase";
+import IssueDetails from './IssueDetails'
 import {toast} from "react-toastify";
 
 class Form extends React.Component {
@@ -7,12 +8,16 @@ class Form extends React.Component {
     super(props);
     
     this.state = {
-      issues: []
+      issues: [],
+      yourvariable: null
     };
   }
 
   componentDidMount() {
     this.getUserData();
+  }
+  sendVariable(uid){
+    this.setState({yourvariable: uid});
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -115,6 +120,7 @@ class Form extends React.Component {
     const { issues } = this.state;
     return (
       <React.Fragment>
+        {/* <IssueDetails onChange={this.sendVariable.bind(this)}/> */}
         <div className="container">
           <div className="row">
             

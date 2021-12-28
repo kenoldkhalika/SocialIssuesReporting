@@ -1,6 +1,10 @@
 import React from "react";
 import './Home.css';
 import fireDb from "firebase";
+import Home from './Home';
+import Form from './Form';
+import {toast} from "react-toastify";
+
 
 
 
@@ -12,7 +16,8 @@ class App extends React.Component {
     super(props);
     //fireDb.initializeApp(config)
     this.state = {
-      issues: []
+      issues: [],
+      yourvariable: null
       
     };
    
@@ -20,8 +25,13 @@ class App extends React.Component {
   
 
   componentDidMount() {
-    this.getUserData();
+    this.getData();
+    this.nice();
   } 
+  sendVariable(uid){
+    this.setState({yourvariable: uid});
+  }
+ 
   getUserData = () => {
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {
@@ -29,8 +39,29 @@ class App extends React.Component {
       this.setState(state);
     });
   };
+  
 
+getData = () =>{
+  toast.configure();
+  let variable="";
+   <Home dataFromParent = {this.state} />
+  let ref = fireDb.database().ref("/");
+  ref.child("issues").orderByChild("name").equalTo("Gender based violence").on("child_added", snapshot => {
+    const state = snapshot.val();
+    const name1 = "Justine";
+     this.setState(state);
+    toast(name1,
+    {position:toast.POSITION.TOP_CENTER, autoClose:1500})
+  });   
+}; 
 
+nice = () =>{
+  let Justine = {name: "Jusine", Surname: "Msosa"};
+  // this.setState(Justine)
+  toast("Justine",
+    {position:toast.POSITION.TOP_CENTER, autoClose:1500})
+
+}
  
 
   updateData = issue => {
@@ -46,12 +77,16 @@ class App extends React.Component {
   };
 
   render() {
+    let variable=" ";
     const { issues} = this.state;
     return (
       <React.Fragment>
+        {/* <Form /> */}
+       {/* <div onClick={this.props.onChange(variable)}></div>  */}
+        {/* <Home onChange={this.sendVariable.bind(this)}/> */}
         <div className="container">
           <div className="row">
-            
+        
           </div>
           <div className="row">
            
@@ -61,24 +96,23 @@ class App extends React.Component {
           <div className="row">
             <div className="col-xl-12">
             {/* <button className="btn btn-primary mt-2"> create ticket</button> */}
+            
             <table id="customers">
    <tr>
     <th>NAME</th>
+    
      <th>CONTACT</th>
      <th>SUBJECT</th>
      <th>LOCATION</th>
     <th>DATE</th>
-    <th>ACTIONS</th>
+   
    </tr>
    <tbody>
-   {issues.map(issue => {
-     return(
        <tr>
-         <td>{issue.name}</td>
-         <td>{issue.contact}</td>
-         <td>{issue.subject}</td>
-         <td>{issue.location}</td>
-         <td>{issue.date}</td>
+         <td>{this.state.name}</td> 
+         <td>{this.state.contact}</td>
+        <td>{this.state.subject}</td>
+         <td>{this.state.location}</td>
          <td> 
            {/* <button
                      onClick={() => this.removeData(issue)}
@@ -101,13 +135,6 @@ class App extends React.Component {
         
        
        </tr>
-
-     )
-     
-    } )
-   
-  
-  }
                
             </tbody>
  </table>
