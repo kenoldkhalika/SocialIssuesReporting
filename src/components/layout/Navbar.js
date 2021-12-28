@@ -1,8 +1,9 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
+import '../Header.css'
 const Navbar= () =>{
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark bd-navbar flex-column flex-md-row">
        
        <div className="container">
           <a className="navbar-brand" href="#">Patient</a>

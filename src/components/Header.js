@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import "./Header.css"
+import Logo from './layout/Logo.png';
 
 const Header = () => {
 const [activeTab, setActiveTab] = useState("Home");
@@ -19,7 +20,9 @@ useEffect(()=> {
 
     return (
         <div className="header">
-       <p className="logo"> </p>
+            
+       <p className="logo"> <img src={Logo} alt="Logo" width="50px" /> </p>
+       <p > Social Issues Reporting And Tracking </p>
        <div className="header-right">
        <Link to="/">
        

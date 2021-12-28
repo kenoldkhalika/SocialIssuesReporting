@@ -9,6 +9,9 @@ import AddReport from './pages/AddReport';
  import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
+import Navbar from './components/layout/Navbar'
+// import Navbar from './components/Navbar';
+
 import Modalz from './pages/IssueDetails';
 
 
@@ -22,6 +25,7 @@ function App() {
        <BrowserRouter>
    
      <Header/>
+     {/* <Navbar /> */}
    
 
      <Routes>
