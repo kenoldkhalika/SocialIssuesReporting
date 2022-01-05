@@ -22,7 +22,7 @@ useEffect(()=> {
         <div className="header">
             
        <p className="logo"> <img src={Logo} alt="Logo" width="50px" /> </p>
-       <p > Social Issues Reporting And Tracking </p>
+    <p style ={{color:"white", marginTop:"35px", fontSize:"25px"}}> Social Issues Reporting And Tracking </p> 
        <div className="header-right">
        <Link to="/">
        
@@ -37,6 +37,20 @@ useEffect(()=> {
        
        <p className={`${activeTab==="AddContact" ? "active" : ""}`}
         onClick={()=> setActiveTab("AddContact")}> Add </p>
+       
+       </Link>
+
+       <Link to="issues">
+       
+       <p className={`${activeTab==="Issues" ? "active" : ""}`}
+        onClick={()=> setActiveTab("Issues")}> Issues </p>
+       
+       </Link>
+
+       <Link to="/charts">
+       
+       <p className={`${activeTab==="Charts" ? "active" : ""}`}
+        onClick={()=> setActiveTab("Charts")}> Charts </p>
        
        </Link>
 

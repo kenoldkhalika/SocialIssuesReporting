@@ -9,7 +9,10 @@ import AddReport from './pages/AddReport';
  import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
+import Charts from './pages/Charts';
+import Issues from './pages/Issues';
 import Navbar from './components/layout/Navbar'
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import Navbar from './components/Navbar';
 
 import Modalz from './pages/IssueDetails';
@@ -32,6 +35,8 @@ function App() {
       <Route path="/" element={<Home></Home>}/>
        < Route path="/about" element={<About></About>}/>
        < Route path="/add" element={<AddEdit></AddEdit>}/>
+       < Route path="/issues" element={<Issues></Issues>}/>
+       < Route path="/charts" element={<Charts></Charts>}/>
        < Route path="/report/edit" element={<AddReport></AddReport>}/>
 
        {/* < Route path="/update/:id" element={<AddReport></AddReport>}/>  */}

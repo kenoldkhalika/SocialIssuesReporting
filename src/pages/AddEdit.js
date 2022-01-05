@@ -7,6 +7,7 @@ import {toast} from "react-toastify"
 
 import 'react-toastify/dist/ReactToastify.css';
 import Form from './Form';
+import IssueForm from './Form';
 
   
 
@@ -83,9 +84,10 @@ const AddEdit =()=>{
 
 
     return (
-        <div >
+        <div style={{background:"#f0f0f0"}}>
             {/* <Form /> */}
-            <Form></Form>
+            {/* <Form></Form> */}
+            <IssueForm></IssueForm>
         </div>
     );
 };

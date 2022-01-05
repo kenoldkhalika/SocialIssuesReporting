@@ -17,7 +17,7 @@ class App extends React.Component {
     //fireDb.initializeApp(config)
     this.state = {
       issues: [],
-      yourvariable: null
+    
       
     };
    
@@ -28,9 +28,7 @@ class App extends React.Component {
     this.getData();
     this.nice();
   } 
-  sendVariable(uid){
-    this.setState({yourvariable: uid});
-  }
+
  
   getUserData = () => {
     let ref = fireDb.database().ref("/");
@@ -43,10 +41,8 @@ class App extends React.Component {
 
 getData = () =>{
   toast.configure();
-  let variable="";
-   <Home dataFromParent = {this.state} />
   let ref = fireDb.database().ref("/");
-  ref.child("issues").orderByChild("name").equalTo("Gender based violence").on("child_added", snapshot => {
+  ref.child("issues").orderByChild("name").equalTo("hyydgy7").on("child_added", snapshot => {
     const state = snapshot.val();
     const name1 = "Justine";
      this.setState(state);
@@ -77,7 +73,7 @@ nice = () =>{
   };
 
   render() {
-    let variable=" ";
+
     const { issues} = this.state;
     return (
       <React.Fragment>

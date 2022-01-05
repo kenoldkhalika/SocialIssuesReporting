@@ -19,6 +19,7 @@
     border-radius: 4px;
    
 }
+
 .header p.logo{
     font-size: 25px;
     font-weight: bold;
@@ -38,6 +39,11 @@
     float: right;
     
 }
+.header-name{
+    color: white;
+    padding-top: 100px;
+    margin-top: 100px;
+}
 @media screen and (max-width : 500px){
     .header p{
         float: none;
@@ -47,4 +53,5 @@
     .header-right{
         float: none;
     }
+
 }
