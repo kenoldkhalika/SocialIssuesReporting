@@ -10,6 +10,7 @@ import AddReport from './pages/AddReport';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Charts from './pages/Charts';
+import Footer from './pages/Footer';
 import Issues from './pages/Issues';
 import Navbar from './components/layout/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +29,7 @@ function App() {
        <BrowserRouter>
    
      <Header/>
+     
      {/* <Navbar /> */}
    
 
@@ -37,6 +39,7 @@ function App() {
        < Route path="/add" element={<AddEdit></AddEdit>}/>
        < Route path="/issues" element={<Issues></Issues>}/>
        < Route path="/charts" element={<Charts></Charts>}/>
+       {/* < Route path="/charts" element={<Footer></Footer>}/> */}
        < Route path="/report/edit" element={<AddReport></AddReport>}/>
 
        {/* < Route path="/update/:id" element={<AddReport></AddReport>}/>  */}
@@ -46,10 +49,10 @@ function App() {
        <Route  element={<NotFound></NotFound>}/>
       </Routes>
       
-   
+    
       </BrowserRouter>
 
-     
+         
       
     </div>
     
