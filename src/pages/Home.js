@@ -65,7 +65,7 @@ const Home =()=>{
             </p>
 
 
-         <Link to='/home2'>   <button style={{ marginTop:" 60px",
+         <Link to='/home-page'>   <button style={{ marginTop:" 60px",
             margin:"center",
             
             textAlign: "center",

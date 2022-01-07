@@ -5,6 +5,7 @@ import AddEdit from './pages/AddEdit';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
+import Home2 from './pages/Home2'
 import AddReport from './pages/AddReport';
  import '../node_modules/bootstrap/dist/css/bootstrap.css';
 //  import { Footer } from './components/Footer';
@@ -40,6 +41,7 @@ function App() {
        < Route path="/add" element={<AddEdit></AddEdit>}/>
        < Route path="/issues" element={<Issues></Issues>}/>
        < Route path="/charts" element={<Charts></Charts>}/>
+       < Route path="/home-page" element={<Home2></Home2>}/>
        {/* < Route path="/charts" element={<Footer></Footer>}/> */}
        < Route path="/report/edit" element={<AddReport></AddReport>}/>
 

@@ -24,7 +24,7 @@ useEffect(()=> {
        <p className="logo"> <img src={Logo} alt="Logo" width="50px" /> </p>
     <p style ={{color:"white", marginTop:"35px", fontSize:"25px"}}> Social Issues Reporting And Tracking </p> 
        <div className="header-right">
-       <Link to="/">
+       <Link to="/home-page">
        
        <p className={`${activeTab==="Home" ? "active" : ""}`}
         onClick={()=> setActiveTab("Home")}> Home</p>
