@@ -121,87 +121,122 @@ class IssueForm extends React.Component {
   render() {
     const { issues } = this.state;
     return (
+     
       <Container>
-        <Row>
+         <div className="row">
+            <div className className="col-2"></div>
+            <div className className="col-9"> 
+            <Row>
           <Col>
           <br />
           <h3 style={{color:"#563e7c"}}>Add your issue</h3>
           <hr />
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} >
             <input type="hidden" ref="uid" />
-              <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Label>Name</Form.Label>
+              
+            <Form.Group  as={Col} controlId="formGridEmail">
+                
                   <input 
                   type="text"
                   ref="name"
                   className="form-control"
-                  placeholder="Enter Name"/>
-                </Form.Group>
+                  placeholder="Full Name"/>
+            </Form.Group>
                 
             <Form.Group as={Col} controlId="formGridPassword">
-                  <Form.Label>Email</Form.Label>
+                <br />
                   <input
                       type="text"
                       ref="email"
                       className="form-control"
                       placeholder="Email"/>
-                </Form.Group>
-              </Row>
+            </Form.Group>
+             
 
-              <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridLocation">
-                  <Form.Label>Location</Form.Label>
+              <br />
+            <Form.Group as={Col} controlId="formGridLocation">
+                  
                   <input  
                       type="text"
                       ref="location"
                       className="form-control"
                       placeholder="Location"/>
-                </Form.Group>
+            </Form.Group>
+            <br />
 
-                <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Label>Contact</Form.Label>
+            <Form.Group as={Col} controlId="formGridEmail">
+                  
                   <input
                    type="text"
                    ref="contact"
                    className="form-control"
                    placeholder="contact"/>
-                </Form.Group>
-              </Row>
-
-              <Row className="mb-3">
-              <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>Subject</Form.Label>
+            </Form.Group>
+              
+            <div className="row">
+             <div className="col 6">
+             <hr />
+              <Form.Group as={Row} className="mb-3" controlId="formGridState">
+                  <Form.Label column sm="2">Subject</Form.Label>
+                  <Col sm="10">
                   <Form.Select defaultValue="Gender based violence" ref="subject">
-                    <option>Gender based violence</option>
-                    <option>Child abuse</option>
+                  <option>Gender based violence</option>
+                  <option>Child abuse</option>
                   </Form.Select>
+                  </Col>
                 </Form.Group>
-                <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>Priority</Form.Label>
+               <hr />
+             </div>
+             <div className="col 6">
+               <hr />
+             <Form.Group as={Row} className="mb-3" controlId="formGridState">
+                  <Form.Label column sm="2">Assign</Form.Label>
+                  <Col sm="10">
+                  <Form.Select defaultValue="J.Msosa">
+                    <option>J.Msosa</option>
+                    <option>K.Khalika</option>
+                  </Form.Select>
+                  </Col>
+                </Form.Group>
+
+              <hr />
+             </div>
+          </div>
+          <div className="row">
+             <div className="col 6">
+             <hr />
+              <Form.Group as={Row} className="mb-3" controlId="formGridState">
+                  <Form.Label column sm="2">Priority</Form.Label>
+                  <Col sm="10">
                   <Form.Select defaultValue="Midium">
                     <option>Midium</option>
                     <option>Low</option>
                     <option>High</option>
                   </Form.Select>
+                  </Col>
                 </Form.Group>
+               <hr />
+             </div>
+             <div className="col 6">
+               <hr />
+               <Form.Group as={Row} className="mb-3" controlId="formGridLocation" >
+            <Form.Label column sm="2">
+              Date
+            </Form.Label>
+            <Col sm="10">
+              <Form.Control type="date" placeholder="Normal text"  ref = "date" />
+            </Col>
+            </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>Assign</Form.Label>
-                  <Form.Select defaultValue="J.Msosa">
-                    <option>J.Msosa</option>
-                    <option>K.Khalika</option>
-                  </Form.Select>
-                </Form.Group>
-              </Row>
-
+              <hr />
+             </div>
+          </div>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Issue Description</Form.Label>
-                <Form.Control as="textarea" rows={3} ref = "issueDescription" />
+            
+                <Form.Control as="textarea" rows={3} ref = "issueDescription" placeholder="Add description, to clarify the issue" />
               </Form.Group>
-
-            <Form.Group className="position-relative mb-3">
-            <Form.Label>File</Form.Label>
+              <br />
+              <Form.Group className="position-relative mb-3">
             <Form.Control
               type="file"
               // required
@@ -213,32 +248,27 @@ class IssueForm extends React.Component {
               
             </Form.Control.Feedback>
           </Form.Group>
-          <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridLocation" >
-            <Form.Label column lg={2}>
-              Open Date
-            </Form.Label>
-            <Col>
-              <Form.Control type="date" placeholder="Normal text"  ref = "date" />
-            </Col>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridLocation">
-            <Form.Label column lg={2}>
-              Due Date
-            </Form.Label>
-            <Col>
-              <Form.Control type="date" placeholder="Normal text" />
-            </Col>
-            </Form.Group>
-          </Row>
+          
           <hr /> {' '} 
-          <Button variant="outline-primary">Preview</Button>{' '} 
-          <Button type="submit" style={{background:"#563e7c" }}>Submit form</Button>
+          <div className="row">
+            <div className="col-10"></div>
+            <div className="col-2" >
+              <Button type="submit" style={{background:"#563e7c",  }}>Add Issue</Button>
+            </div>
+          </div>
+          <br />
+          <br />
+          {/* <Button variant="outline-primary">Preview</Button>{' '} 
+          <Button type="submit" style={{background:"#563e7c",  }}>Add</Button> */}
           
             </Form>
           
           </Col>
         </Row>
+            </div>
+            <div className className="col-1"></div>
+        </div>
+        
       </Container>
   )
   }
