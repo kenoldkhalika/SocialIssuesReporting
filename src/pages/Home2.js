@@ -70,9 +70,10 @@ class App extends React.Component {
     const { issues } = this.state;
     
     return (
+      <div style={{background:"#f0f0f0"}}>
       <React.Fragment>
         
-        <div class="row"  style={{margin:"auto", marginTop:"100px", marginLeft:"300px" }}>
+        <div class="row"  style={{margin:"auto", marginTop:"1px", marginLeft:"300px" }}>
       <div class="col-sm-6" style={{width:"700px"   }}>
       {issues.map((issue,index) => {
      return(
@@ -112,7 +113,7 @@ class App extends React.Component {
       </div>
     </div>
       </React.Fragment>
-     
+      </div>
      
     );
   }
