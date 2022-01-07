@@ -70,10 +70,9 @@ class App extends React.Component {
     const { issues } = this.state;
     
     return (
-      <div style={{background:"#f0f0f0"}}>
-      <React.Fragment >
+      <React.Fragment>
         
-        <div class="row"  style={{margin:"auto", marginTop:"10px", marginLeft:"300px" }}>
+        <div class="row"  style={{margin:"auto", marginTop:"100px", marginLeft:"300px" }}>
       <div class="col-sm-6" style={{width:"700px"   }}>
       {issues.map((issue,index) => {
      return(
@@ -102,8 +101,7 @@ class App extends React.Component {
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
           <div class="card-body">
-            open<br />
-            <a href="#" class="btn btn-primary">0</a>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
           <div class="card-body">
             <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -115,7 +113,7 @@ class App extends React.Component {
     </div>
       </React.Fragment>
      
-      </div>
+     
     );
   }
 }
