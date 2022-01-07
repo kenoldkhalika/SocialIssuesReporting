@@ -125,8 +125,8 @@ class IssueForm extends React.Component {
     return (
       <Container>
       <div className="row">
-         <div className className="col-2"></div>
-         <div className className="col-9"> 
+         <div className className="col-2"> </div>
+         <div className className="col-8"> 
          <Row>
        <Col>
        <br />
