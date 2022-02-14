@@ -4,6 +4,8 @@ import fireDb from "firebase";
 import IssueDetails from './IssueDetails';
 import { Link } from "react-router-dom";
 import { Card } from "reactstrap";
+import {BsPersonCircle, BsColumns } from "react-icons/bs";
+
 
 
 // import { Form } from "./Form";
@@ -44,7 +46,17 @@ class App extends React.Component {
       this.setState(state);
     });
   };
+  // getUserData = () => {
+  //   let ref = fireDb.database().ref("/");
+  //   ref.child('issues').orderByChild("state1").endAt("pending").on("value", snapshot => {
+  //     const state = snapshot.val();
+  //     this.setState(state);
+  //   });
+  // };
 
+//   dbRef.orderByChild("name").endAt("Raja Tamil").on("child_added", (snap) => {
+//     console.log(snap.val());
+// });
 
   removeData = issue => {
     const { issues } = this.state;
@@ -55,57 +67,76 @@ class App extends React.Component {
   };
 
   updateData = issue => {
-    // this.refs.uid.value = issue.uid;
+    this.refs.uid.value = issue.uid;
+    this.refs.state1.value = issue.state1;
     this.refs.name.value = issue.name;
-    this.refs.subject.value = issue.subject;
     this.refs.contact.value = issue.contact;
     this.refs.email.value = issue.email;
-   //  this.refs.email.value = issue.email;
-     this.refs.location.value = issue.location;
-    this.refs.date.value = issue.date;
-     this.refs.issueDescription.value = issue.issueDescription;
+    this.refs.priority.value = issue.priority;
+    this.ref.location.value = issue.location;
+    this.ref.date.value = issue.date;
+    this.ref.issueDescription.value = issue.issueDescription;
+    this.ref.subject.value = issue.subject;
+    this.ref.source.value = issue.source;
   };
-
   render() {
     const { issues } = this.state;
     
     return (
       <div style={{background:"#f0f0f0"}}>
+     
       <React.Fragment>
         
         <div class="row"  style={{margin:"auto", marginTop:"1px", marginLeft:"300px" }}>
       <div class="col-sm-6" style={{width:"700px"   }}>
       {issues.map((issue,index) => {
      return(
-        <div class="card" key={index} style={{margin:"20px"}}>
-          <div class="card-body">
-         
-  
+        
+      <div className='col-6' class="card" key={index} style={{margin:"20px"}}>
+      <div class="card-body">
       
-        <h5>{issue.name}</h5>
-        <h5>{issue.contact}</h5>
+     
+      <h6 style={{marginLeft:"-350px"}}>{issue.date}</h6>
+      <hr />
+    <div className="row">  
+    <div className="col-6">
+    <h3 style={{textAlign: 'left'}}> <BsPersonCircle style={{marginRight:"15px", fontSize:"1.5em"}}/>
+    {issue.name} 
+    </h3> </div>
+    <div className="col-6">
+    <button style={{width:"90px", fontSize:".5em",  borderRadius: 50 + 'px'}}>pending</button>
+    </div></div>
+    <h5  style={{ textAlign: 'left', marginTop:'10px'}}>{issue.subject}</h5>
+    
+    <p style={{ textAlign: 'left', }}>{issue.issueDescription}</p>
 
-     
-     
-          </div>
-        </div>
+
+ 
+      </div>
+    </div>
          ) }
          )
        }
       </div>
-      <div class="col-sm-6" style={{width:"200px"   }}>
+      <div class="col-sm-6" style={{width:"260px"   }}>
         <div class="card" style={{margin:"20px"}}>
           <div class="card-body">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h6>pending</h6>
+            <a href="#" class="btn btn-primary"  style={{width:"134px",borderRadius: 50 + 'px'}}>1</a>
+          </div>
+          
+          <div class="card-body">
+          <h6>open</h6>
+            <a href="#" class="btn btn-primary"  style={{width:"134px",borderRadius: 50 + 'px'}}>2</a>
           </div>
           <div class="card-body">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h6>resolved</h6>
+            <a href="#" class="btn btn-primary"  style={{width:"134px",borderRadius: 50 + 'px'}}>3</a>
           </div>
+
           <div class="card-body">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-          <div class="card-body">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h6>closed</h6>
+            <a href="#" class="btn btn-primary" style={{width:"134px",borderRadius: 50 + 'px'}}>4</a>
 
           </div>
           
@@ -121,11 +152,3 @@ class App extends React.Component {
 
 export default App;
 
-
-
-
-// <Card key={index} style={{margin:"20px"}}>
-// <h5>{issue.name}</h5>
-//  <h5>{issue.contact}</h5>
-
-// </Card>

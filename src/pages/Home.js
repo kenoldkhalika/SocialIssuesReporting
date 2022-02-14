@@ -50,7 +50,7 @@ const Home =()=>{
             color: "#000000"
           }}
             
-            >Be Young, Have Fun, <br/> <span style={{ fontSize: "50px"}}>Drink Pepsi</span></h1>
+            >End Violence Against <br/> <span style={{ fontSize: "50px"}}>Chidren and Women</span></h1>
             <p 
             style={{ fontSize: "20px",
              fontWeight: "6000",
@@ -61,7 +61,7 @@ const Home =()=>{
              color: "#000000",
             }}
             
-            >Pepsi is a carbonated soft drink manufactured by PepsiCo. <br/>Originally created and developed in 1893 by Caleb Bradham <br/>and introduced as Brad's Drink, it was renamed as Pepsi-Cola in 1898,<br/> and then shortened to Pepsi in 1961.
+            >Empowering the youth, Women and Children. <br/>Promoting good health, human rights and democracy. <br/>Adapting and mitigating effects of climate change;<br/> and conducting research for evidence based programming and advocacy.
             </p>
 
 

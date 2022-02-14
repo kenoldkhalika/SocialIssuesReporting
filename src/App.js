@@ -51,7 +51,7 @@ function App() {
 
        <Route  element={<NotFound></NotFound>}/>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     
       </BrowserRouter>
 

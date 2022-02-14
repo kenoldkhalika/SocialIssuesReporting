@@ -57,11 +57,12 @@ class IssueForm extends React.Component {
     let subject = this.refs.subject.value;
     let priority = "low";
     let source = "Web app";
+    let state1 = "pending"
 
     let uid = this.refs.uid.value;
     toast.configure();
 
-    if (uid && name && contact && email && location && date && issueDescription && subject) {
+    if (uid && name && contact && email && location && date && issueDescription && subject && state1) {
       const { issues } = this.state;
       const devIndex = issues.findIndex(data => {
         return data.uid === uid;
@@ -71,7 +72,8 @@ class IssueForm extends React.Component {
       issues[devIndex].contact = contact;
       issues[devIndex].email = email;
       issues[devIndex].subject = subject;
-      // issues[devIndex].email = email;
+      issues[devIndex].state1 = state1;
+      issues[devIndex].email = email;
        issues[devIndex].location = location;
       issues[devIndex].date = date;
        issues[devIndex].issueDescription = issueDescription;
@@ -79,7 +81,7 @@ class IssueForm extends React.Component {
     } else if (name && <i class="fas fa-meh-rolling-eyes    "></i>) {
       const uid = new Date().getTime().toString();
       const { issues } = this.state;
-      issues.push({ uid, name, contact, email, location, date, issueDescription, subject, priority, source});
+      issues.push({ uid, name, contact, email, location, date, issueDescription, subject, priority, source, state1});
       this.setState({ issues });
      
         toast('added successfully',
@@ -109,15 +111,16 @@ class IssueForm extends React.Component {
 
   updateData = issue => {
     this.refs.uid.value = issue.uid;
-    this.refs.uid.value = issue.uid;
+    this.refs.state1.value = issue.state1;
     this.refs.name.value = issue.name;
     this.refs.contact.value = issue.contact;
     this.refs.email.value = issue.email;
-   //  this.refs.email.value = issue.email;
-     this.ref.location.value = issue.location;
-     this.ref.date.value = issue.date;
-     this.ref.issueDescription.value = issue.issueDescription;
-      this.ref.subject.value = issue.subject;
+    this.refs.priority.value = issue.priority;
+    this.ref.location.value = issue.location;
+    this.ref.date.value = issue.date;
+    this.ref.issueDescription.value = issue.issueDescription;
+    this.ref.subject.value = issue.subject;
+    this.ref.source.value = issue.source; 
   };
 
   render() {
@@ -147,7 +150,7 @@ class IssueForm extends React.Component {
          <Form.Group as={Col} controlId="formGridPassword">
              <br />
                <input
-                   type="text"
+                   type="email"
                    ref="email"
                    className="form-control"
                    placeholder="Email"/>
@@ -173,7 +176,6 @@ class IssueForm extends React.Component {
                 className="form-control"
                 placeholder="contact"/>
          </Form.Group>
-           
          <div className="row">
           <div className="col 6">
           <hr />
@@ -186,7 +188,7 @@ class IssueForm extends React.Component {
                </Form.Select>
                </Col>
              </Form.Group>
-            <hr />
+        
           </div>
           <div className="col 6">
             <hr />
@@ -200,7 +202,7 @@ class IssueForm extends React.Component {
                </Col>
              </Form.Group>
 
-           <hr />
+     
           </div>
        </div>
        <div className="row">

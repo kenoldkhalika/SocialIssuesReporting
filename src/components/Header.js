@@ -50,7 +50,7 @@ useEffect(()=> {
        <Link to="/charts">
        
        <p className={`${activeTab==="Charts" ? "active" : ""}`}
-        onClick={()=> setActiveTab("Charts")}> Charts </p>
+        onClick={()=> setActiveTab("Charts")}> Dashboard </p>
        
        </Link>
 
