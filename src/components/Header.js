@@ -2,7 +2,8 @@ import React, {useEffect, useState } from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import "./Header.css"
 import Logo from './layout/Logo.png';
-
+import { menuItems } from "../pages/menuItems";
+import MenuItems from "../pages/MenuItemss";
 const Header = () => {
 const [activeTab, setActiveTab] = useState("Home");
 const location =useLocation();
@@ -20,17 +21,18 @@ useEffect(()=> {
 
     return (
         <div className="header">
+     
+
             
-       <p className="logo"> <img src={Logo} alt="Logo" width="50px" /> </p>
-    <p style ={{color:"white", marginTop:"35px", fontSize:"25px"}}> Social Issues Reporting And Tracking </p> 
-       <div className="header-right">
-       <Link to="/home-page">
+      <div> <p className="logo"> <img src={Logo} alt="Logo" width="50px" /> </p>
+    <p style ={{color:"white", marginTop:"35px", fontSize:"25px"}}> Social Issues Reporting And Tracking </p> </div> 
+       <div className="header-right"> 
+       <Link to="/home-page"> 
        
        <p className={`${activeTab==="Home" ? "active" : ""}`}
         onClick={()=> setActiveTab("Home")}> Home</p>
        
        </Link>
-
 
 
        <Link to="/add">
@@ -39,6 +41,13 @@ useEffect(()=> {
         onClick={()=> setActiveTab("AddContact")}> Add </p>
        
        </Link>
+       {/* <p>
+            <div className="menus">
+            {menuItems.map((menu, index) => {
+        return <MenuItems items={menu} key={index} />;
+         })}
+         </div>
+        </p> */}
 
        <Link to="issues">
        

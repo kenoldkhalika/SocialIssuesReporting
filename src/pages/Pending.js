@@ -11,7 +11,7 @@ import { AiTwotoneCalendar } from "react-icons/ai";
 // import { Form } from "./Form";
 //import config from "./config";
 
-class App extends React.Component {
+class Pending extends React.Component {
   constructor(props) {
     super(props);
     //fireDb.initializeApp(config)
@@ -180,5 +180,5 @@ countPending = () =>{
   }
 }
 
-export default App;
+export default Pending;
 

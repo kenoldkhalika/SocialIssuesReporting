@@ -11,7 +11,7 @@ import { AiTwotoneCalendar } from "react-icons/ai";
 // import { Form } from "./Form";
 //import config from "./config";
 
-class App extends React.Component {
+class Open extends React.Component {
   constructor(props) {
     super(props);
     //fireDb.initializeApp(config)
@@ -62,7 +62,7 @@ countPending = () =>{
   const {issues} = this.state;
   const pending = 0;
   issues.map((issue,index) => {
-    if (issue.source === 'Web app'){
+    if (issue.source === 'open'){
        const pendind = pending + 1;
     }
     return pending;
@@ -118,7 +118,7 @@ countPending = () =>{
           }
         }
 
-        if (issue.state1 === 'pending'){
+        if (issue.state1 === 'open'){
 
      return(
         
@@ -134,7 +134,7 @@ countPending = () =>{
     {issue.name} 
     </h3> </div>
    <div className="col-6">
-    <button  style={{width:"90px", fontSize:".5em",  borderRadius: 50 + 'px', color:'#563e7c'}}>pending</button>
+    <button  style={{width:"90px", fontSize:".5em",  borderRadius: 50 + 'px', color:'#563e7c'}}>open</button>
     </div></div>
     <h5  style={{ textAlign: 'left', marginTop:'10px'}}>{issue.subject}</h5>
     
@@ -157,7 +157,7 @@ countPending = () =>{
           
           <div class="card-body">
           <h6>open</h6>
-            <a href="Open" class="btn btn-dark" onClick={(e)=>this.countPending()} style={{width:"134px",borderRadius: 50 + 'px', background:'#563e7c'}}>0</a>
+            <a href="Open" class="btn btn-dark" onClick={(e)=>this.countPending()} style={{width:"134px",borderRadius: 50 + 'px', background:'#563e7c'}}>{count+1}</a>
           </div>
           <div class="card-body">
           <h6>resolved</h6>
@@ -180,5 +180,5 @@ countPending = () =>{
   }
 }
 
-export default App;
+export default Open;
 

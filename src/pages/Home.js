@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import background1 from './assets/img/background1.jpg'
+import './Home.css';
 
 const Home =()=>{
     return (
@@ -65,24 +66,27 @@ const Home =()=>{
             </p>
 
 
-         <Link to='/home-page'>   <button style={{ marginTop:" 60px",
-            margin:"center",
-            
-            textAlign: "center",
-            transition: ".5s",
+         <Link to='/home-page'>   <button className="click" style={{ 
+           marginTop:" 60px",
+           margin:"center",
+           
+           textAlign: "center",
+           transition: ".5s",
 
 
-            border:" none",
-            outline: "none",
-           textTransform: "uppercase",
-           color: "#1b1b1b",
-            fontSize: "20px",
-           fontWeight: "700",
-          borderRadius: "30px",
-           boxsShadow: "1px 4px 12px rgba(94,28,68,.15",
+           border:" none",
+           outline: "none",
+          textTransform: "uppercase",
+          
+          color: "#1b1b1b",
+           fontSize: "20px",
+          fontWeight: "700",
+         borderRadius: "30px",
+          boxsShadow: "1px 4px 12px rgba(94,28,68,.15",
 
 
-             padding: "15px 30px"}}
+            padding: "15px 30px"
+         }}
              
              
              class="btn3">Start Now</button></Link>

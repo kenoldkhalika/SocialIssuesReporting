@@ -11,6 +11,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button, Modal, Row, Col, Form, FormGroup, FormLabel, FormControl, Card } from "react-bootstrap";
 import './Issues.css';
 import ToggleButton from 'react-toggle-button'
+import { AiOutlineEdit } from "react-icons/ai";
+import {GrView} from "react-icons/gr";
+import {MdOutlineDelete} from "react-icons/md";
 
 class App extends React.Component {
   constructor(props) {
@@ -206,15 +209,15 @@ handleClick = () => {
              
           <div className="row">
             <div className="col-xl-12">
-            <ToggleButton >hgyxgyx </ToggleButton>
             
             <table id="customers">
    <tr>
-    <th>NAME</th>
+    <th >NAME</th>
      <th>CONTACT</th>
      <th>SUBJECT</th>
      <th>LOCATION</th>
     <th>DATE</th>
+    <th>STATE</th>
     <th>ACTIONS</th>
    </tr>
    <tbody>
@@ -222,36 +225,38 @@ handleClick = () => {
      return(
       //  <div>
        <tr>
-         <td>{issue.name}</td>
+         <td>{issue.name }</td>
          <td>{issue.contact}</td>
          <td>{issue.subject}</td>
          <td>{issue.location}</td>
+
          <td>{issue.date}</td>
+         <td>{issue.state1}</td>
          <td> 
             <ul class="list-inline m-0">
               <li class="list-inline-item">  
-                <button className="btn btn-primary formButton btn-sm rounded-0"   
-                type="button" data-toggle="tooltip" data-placement="top"
+                <div  
+                 
               onClick={(e)=>this.changeIssueState(issue)}  
                 // onClick={(e)=>{this.handleShowModal(issue.contact); }}
-                title="Add"><i class="fa fa-table"></i>view</button>
+                title="View"><i class="fa fa-table"></i><GrView></GrView></div>
               </li>
 
               <li class="list-inline-item"> 
                 <Link to="#" >  
-                <button class="btn btn-success btn-sm rounded-0"
+                <div 
                 onClick={(e)=> this.updateData(issue)} 
-                 type="button" data-toggle="tooltip" 
+               data-toggle="tooltip" 
                  data-placement="top" title="Edit">
-                <i class="fa fa-edit"> </i>edit</button></Link>
+                <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
               </li>
               <li class="list-inline-item">
-              <button onClick={(e)=>this.removeData(issue)} 
-              class="btn btn-danger btn-sm rounded-0" 
-              type="button" data-toggle="tooltip" 
+              <div onClick={(e)=>this.removeData(issue)} 
+               
+             data-toggle="tooltip" 
               value={issue.name}
               data-placement="top" title="Delete"><i 
-              class="fa fa-trash"></i>delete</button>
+              class="fa fa-trash"></i><MdOutlineDelete /></div>
               </li>
               </ul>
                     

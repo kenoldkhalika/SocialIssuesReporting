@@ -1,64 +1,52 @@
 #customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 900px;
-    margin: auto;
-   margin-top: 20px;
-  }
-  
-  #customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #customers tr:hover {background-color: #ddd;}
-  
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color:#00000080;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 900px;
+  margin: auto;
+ margin-top: 20px;
+}
 
-    color: white;
-  }
-  .button {
-    display: inline-block;
-    padding: 0 10px 10px 10px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4284f5;
-    border: none;
-    margin-top: auto;
-    border-radius: 5px;
- 
-  }
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 4px;
+}
 
-  .btn1 {
-    display: inline-block;
-    padding: 0 0 10px 10px;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4284f5;
-    border: none;
-    margin-top: auto;
-    border-radius: 5px;
- 
-  }
-  
-  .button:hover {background-color: #4284f5}
-  
-  .button:active {
-    background-color: #4284f5;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 5PX;
+  padding-bottom: 5px;
+text-align: left;
+
+  background-color:white;
+
+  color: black;
+}
+
+
+/* .btn1 {
+  display: inline-block;
+  padding: 0 0 10px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4284f5;
+  border: none;
+  margin-top: auto;
+  border-radius: 5px;
+
+} */
+
+.button:hover {background-color: #4284f5}
+
+.button:active {
+  background-color: #4284f5;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

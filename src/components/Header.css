@@ -4,7 +4,27 @@
     background-color:  #563e7c;
     height: 100px;
 }
+.dropdown {
+    
+    /* display: none;  */
+}
+
 .header p {
+    float: left;
+    color: #d4c9e6;
+    text-align: center;
+    padding :10px 10px;
+    text-decoration: none;
+    margin-top: 25px;
+    /* margin-inline-end: 10px; */
+    
+    direction: inherit;
+    font-size: 18px;
+    line-height: 15px;
+    border-radius: 4px;
+   
+}
+.header h5 {
     float: left;
     color: #d4c9e6;
     text-align: center;
@@ -26,10 +46,11 @@
     color: #4284f5;
 }
 
-.header p:hover{
+.header-right p:hover{
     /* background-color: #ddd; */
     color: white;
     text-emphasis-color: white;
+    transform: scale(1.02);
 }
 .header p.active{
     /* background-color: dodgerblue; */

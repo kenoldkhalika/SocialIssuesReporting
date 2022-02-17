@@ -16,6 +16,8 @@ import Charts from './pages/Charts';
 import Issues from './pages/Issues';
 import Navbar from './components/layout/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Open from './pages/Open';
+import Pending from './pages/Pending';
 // import Navbar from './components/Navbar';
 
 import Modalz from './pages/IssueDetails';
@@ -38,6 +40,8 @@ function App() {
      <Routes>
       <Route path="/" element={<Home></Home>}/>
        < Route path="/about" element={<About></About>}/>
+       < Route path="/open" element={<Open></Open>}/>
+       < Route path="/pending" element={<Pending></Pending>}/>
        < Route path="/add" element={<AddEdit></AddEdit>}/>
        < Route path="/issues" element={<Issues></Issues>}/>
        < Route path="/charts" element={<Charts></Charts>}/>
