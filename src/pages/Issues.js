@@ -11,9 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button, Modal, Row, Col, Form, FormGroup, FormLabel, FormControl, Card } from "react-bootstrap";
 import './Issues.css';
 import ToggleButton from 'react-toggle-button'
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit,AiOutlineFileAdd } from "react-icons/ai";
 import {GrView} from "react-icons/gr";
 import {MdOutlineDelete} from "react-icons/md";
+import Header from "../components/Header";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -46,7 +48,7 @@ handleSubmit = event => {
   let priority = "low";
   let source = "Web app";
   let state1 = "pending"
-
+  let assign = this.refs.assign.value;
   let uid = this.refs.uid.value;
   toast.configure();
   console.log(uid);
@@ -65,6 +67,7 @@ handleSubmit = event => {
      issues[devIndex].location = location;
     issues[devIndex].date = date;
      issues[devIndex].issueDescription = issueDescription;
+     issues[devIndex].assign = assign;
     this.setState({ issues });
   
 
@@ -135,6 +138,7 @@ handleSubmit = event => {
     this.refs.date.value = issue.date;
     this.refs.issueDescription.value = issue.issueDescription;
     this.refs.subject.value = issue.subject;
+    this.refs.assign.value = issue.assign;
     // this.refs.source.value = issue.source;
 
     $('#form1').toggle().delay(100).fadeOut(5000000);
@@ -148,6 +152,9 @@ handleSubmit = event => {
     $('#form1').hide().delay(100).fadeOut(5000);
   }
   changeIssueState = issue =>{
+    window.localStorage.setItem('data', issue.uid);
+    const user = window.localStorage.getItem('name');
+    if (issue.state1 !== 'resolved' && user !== "reporter" ){
     let issueId = issue.uid;
     let issueName = issue.name;
     let issueSubject = issue.subject;
@@ -158,7 +165,8 @@ handleSubmit = event => {
     let issueDescription = issue.issueDescription;
     let issuePriority = issue.priority;
     let issueSource = issue.source;
-    let issueState = "open"
+    let issueAssign = issue.assign;
+    let issueState = 'open'
     console.log(issue.uid);
     const { issues } = this.state;
     const devIndex = issues.findIndex(data => {
@@ -177,8 +185,10 @@ handleSubmit = event => {
       issues[devIndex].source = issueSource;
       issues[devIndex].subject = issueSubject;
       issues[devIndex].state1 = issueState;
+      issues[devIndex].assign = issueAssign;
       this.setState({ issues });
 
+  }
   };
   onTodoChange(value){
     this.setState({
@@ -194,9 +204,12 @@ handleClick = () => {
   });
 }
   render() {
+    
     const { issues } = this.state;
     return (
+     
       <React.Fragment>
+         {/* <Header/> */}
         
         <div className="container">
           <div className="row">
@@ -207,10 +220,11 @@ handleClick = () => {
                   </div>
                 </div>
              
-          <div className="row">
+          <div className="row"> 
             <div className="col-xl-12">
+        <Link to="/add">   <div className="addbutton" ><AiOutlineFileAdd/></div></Link>   
             
-            <table id="customers">
+            <table id="customers"> 
    <tr>
     <th >NAME</th>
      <th>CONTACT</th>
@@ -218,13 +232,16 @@ handleClick = () => {
      <th>LOCATION</th>
     <th>DATE</th>
     <th>STATE</th>
+    <th>ASSIGN</th>
     <th>ACTIONS</th>
    </tr>
    <tbody>
    {issues.map(issue => {
+     const user = window.localStorage.getItem('name');
+     if (issue.assign == user ){
      return(
       //  <div>
-       <tr>
+       <tr href="/issue-details" onClick={(e)=>this.changeIssueState(issue)}>
          <td>{issue.name }</td>
          <td>{issue.contact}</td>
          <td>{issue.subject}</td>
@@ -232,14 +249,18 @@ handleClick = () => {
 
          <td>{issue.date}</td>
          <td>{issue.state1}</td>
+         <td>{issue.assign}</td>
          <td> 
             <ul class="list-inline m-0">
               <li class="list-inline-item">  
+              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+
+              {/* <Link to="/issue-details" >
                 <div  
                  
               onClick={(e)=>this.changeIssueState(issue)}  
                 // onClick={(e)=>{this.handleShowModal(issue.contact); }}
-                title="View"><i class="fa fa-table"></i><GrView></GrView></div>
+                title="View"><i class="fa fa-table"></i><GrView></GrView></div> </Link> */}
               </li>
 
               <li class="list-inline-item"> 
@@ -266,9 +287,54 @@ handleClick = () => {
        
        </tr>
 
-     )
-     
-    })
+     )}
+   else if (user=='repoter') return (
+    <tr href="/issue-details" >
+    <td>{issue.name }</td>
+    <td>{issue.contact}</td>
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table"><GrView></GrView> </a>
+
+         {/* <Link to="/issue-details" >
+           <div  
+            
+         onClick={(e)=>this.changeIssueState(issue)}  
+           // onClick={(e)=>{this.handleShowModal(issue.contact); }}
+           title="View"><i class="fa fa-table"></i><GrView></GrView></div> </Link> */}
+         </li>
+
+         <li class="list-inline-item"> 
+           <Link to="#" >  
+           <div 
+           onClick={(e)=> this.updateData(issue)} 
+          data-toggle="tooltip" 
+            data-placement="top" title="Edit">
+           <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
+         </li>
+         <li class="list-inline-item">
+         <div onClick={(e)=>this.removeData(issue)} 
+          
+        data-toggle="tooltip" 
+         value={issue.name}
+         data-placement="top" title="Delete"><i 
+         class="fa fa-trash"></i><MdOutlineDelete /></div>
+         </li>
+         </ul>
+               
+               
+       </td>
+   
+  
+  </tr>)
+   }) 
    
   
   }
@@ -278,8 +344,8 @@ handleClick = () => {
 
               <Container>
       <div className="row">
-         <div className className="col-2"> </div>
-         <div className className="col-8"> 
+         <div className="col-2"></div>
+         <div className="col-8"> 
          <Row>
        <Col>
 
@@ -346,7 +412,7 @@ handleClick = () => {
           <Form.Group as={Row} className="mb-3" controlId="formGridState">
                <Form.Label column sm="2">Assign</Form.Label>
                <Col sm="10">
-               <Form.Select defaultValue="J.Msosa">
+               <Form.Select defaultValue="J.Msosa" ref="assign">
                  <option>J.Msosa</option>
                  <option>K.Khalika</option>
                </Form.Select>
@@ -413,19 +479,24 @@ handleClick = () => {
        <br />
        <br />
       </Form>
+      
        
        </Col>
      </Row>
          </div>
-         <div className className="col-1"></div>
+         <div className="col-1"></div>
      </div>
      
    </Container>
      </div>
     </div>
+    
   </React.Fragment>
+  
      );
+  
   }
+ 
 }
 
 export default App;

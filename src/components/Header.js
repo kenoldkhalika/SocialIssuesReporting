@@ -35,12 +35,12 @@ useEffect(()=> {
        </Link>
 
 
-       <Link to="/add">
+       {/* <Link to="/add">
        
        <p className={`${activeTab==="AddContact" ? "active" : ""}`}
         onClick={()=> setActiveTab("AddContact")}> Add </p>
        
-       </Link>
+       </Link> */}
        {/* <p>
             <div className="menus">
             {menuItems.map((menu, index) => {
@@ -56,12 +56,12 @@ useEffect(()=> {
        
        </Link>
 
-       <Link to="/charts">
+       {/* <Link to="/charts">
        
        <p className={`${activeTab==="Charts" ? "active" : ""}`}
         onClick={()=> setActiveTab("Charts")}> Dashboard </p>
        
-       </Link>
+       </Link> */}
 
 
        <Link to="/about">

@@ -1,184 +1,127 @@
-import React from "react";
-import './Home.css';
-import fireDb from "firebase";
-import IssueDetails from './IssueDetails';
-import { Link } from "react-router-dom";
-import { Card } from "reactstrap";
-import {BsPersonCircle, BsColumns } from "react-icons/bs";
-import { AiTwotoneCalendar } from "react-icons/ai";
+import React from 'react'
+// import React, { PureComponent } from 'react';
+import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,
+  Area,YAxis, CartesianGrid, Tooltip, Pie, PieChart, Legend, ResponsiveContainer } from 'recharts';
 
 
-// import { Form } from "./Form";
-//import config from "./config";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    //fireDb.initializeApp(config)
-    this.state = {
-      issues: []
-    };
-   
-  }
-  
+const Charts =()=>{
 
-  componentDidMount() {
-    this.getUserData();
-    this.countPending();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState !== this.state) {
-      this.writeUserData();
-    }
-  }
-
-  writeUserData = () => {
-    fireDb.database()
-      .ref("/")
-      .set(this.state);
-    console.log("DATA SAVED");
-  };
-  
-  getUserData = () => {
-    let ref = fireDb.database().ref("/");
-    ref.on("value", snapshot => {
-      const state = snapshot.val();
-      this.setState(state);
-    });
-  };
-  // getUserData = () => {
-  //   let ref = fireDb.database().ref("/");
-  //   ref.child('issues').orderByChild("state1").endAt("pending").on("value", snapshot => {
-  //     const state = snapshot.val();
-  //     this.setState(state);
-  //   });
-  // };
-
-//   dbRef.orderByChild("name").endAt("Raja Tamil").on("child_added", (snap) => {
-//     console.log(snap.val());
-// });
-countPending = () =>{
-  const {issues} = this.state;
-  const pending = 0;
-  issues.map((issue,index) => {
-    if (issue.source === 'Web app'){
-       const pendind = pending + 1;
-    }
-    return pending;
-  }) 
-  
-}
-
-  removeData = issue => {
-    const { issues } = this.state;
-    const newState = issues.filter(data => {
-      return data.uid !== issue.uid;
-    });
-    this.setState({ issues: newState });
-  };
-
-  updateData = issue => {
-    this.refs.uid.value = issue.uid;
-    this.refs.state1.value = issue.state1;
-    this.refs.name.value = issue.name;
-    this.refs.contact.value = issue.contact;
-    this.refs.email.value = issue.email;
-    this.refs.priority.value = issue.priority;
-    this.ref.location.value = issue.location;
-    this.ref.date.value = issue.date;
-    this.ref.issueDescription.value = issue.issueDescription;
-    this.ref.subject.value = issue.subject;
-    this.ref.source.value = issue.source;
-  };
-  
-  render() {
-    const { issues } = this.state;
-    var arrayExample = [];
-    var count = 0
-    return (
-      <div style={{background:"#f0f0f0"}}>
-        
-     
-      <React.Fragment>
-       
-        <div class="row"  style={{margin:"auto", marginTop:"1px", marginLeft:"300px" }}>
-      <div class="col-sm-6" style={{width:"700px"   }}>
-      
-      {issues.map((issue,index) => {
-        if (issue.state1 === 'pending'){   
-          for (let i = 0; i < index; i++) {
-            console.log(i);
-            if (issue.state1 === 'pending'){
-              arrayExample.push(i);
-              count = index;
-              console.log(arrayExample.length)
-            }
-            
-          }
-        }
-
-        if (issue.state1 === 'pending'){
-
-     return(
-        
-      <div className='col-6' class="card" key={index} style={{margin:"20px"}}>
-      <div class="card-body">
-      
-   
-      <h6 style={{textAlign: 'left',}}><AiTwotoneCalendar style={{marginRight:"15px", fontSize:"1.5em", }}/>{issue.date}  </h6>
-      <hr />
-    <div className="row">  
-    <div className="col-6">
-    <h3 style={{textAlign: 'left'}}> <BsPersonCircle style={{marginRight:"15px", fontSize:"1.5em"}}/>
-    {issue.name} 
-    </h3> </div>
-   <div className="col-6">
-    <button  style={{width:"90px", fontSize:".5em",  borderRadius: 50 + 'px', color:'#563e7c'}}>pending</button>
-    </div></div>
-    <h5  style={{ textAlign: 'left', marginTop:'10px'}}>{issue.subject}</h5>
-    
-    <p style={{ textAlign: 'left', }}>{issue.issueDescription}</p>
-
-      
+  const data = [
+    {
+      name: 'Gender based violence',
+      value: 4000,
+      uv:654,
  
-      </div>
-    </div>
-         ) } }
-         )
-       }
-      </div>
-      <div class="col-sm-6" style={{width:"260px"   }}>
-        <div class="card" style={{margin:"20px"}}>
-          <div class="card-body">
-          <h6>pending</h6> 
-            <a href="Pending" class="btn btn-dark"  style={{width:"134px",borderRadius: 50 + 'px', background:'#563e7c'}}>{count+1}</a>
-          </div>
-          
-          <div class="card-body">
-          <h6>open</h6>
-            <a href="Open" class="btn btn-dark" onClick={(e)=>this.countPending()} style={{width:"134px",borderRadius: 50 + 'px', background:'#563e7c'}}>0</a>
-          </div>
-          <div class="card-body">
-          <h6>resolved</h6>
-            <a href="#" class="btn btn-dark"  style={{width:"134px",borderRadius: 50 + 'px', background:'#563e7c'}}>0</a>
-          </div>
-
-          <div class="card-body" style={{color:'#563e7c'}}>
-          <h6 style={{color:'#563e7c'}}>closed</h6>
-            <a href="#" class="btn btn-dark" style={{width:"134px",borderRadius: 50 + 'px', background:'#563e7c'}}>0</a>
-
-          </div>
+    },
+    {
+      name: 'Child abuse',
+      value: 6000,
+      uv: 435,
+    },
+    {
+      name: 'Child labor',
+      value: 3000,
+      uv: 774,
+    },
+    
+  ];
+  
+  
+    return (
+      <div >
+      <div className='row'> 
+        <div className='col-6'>
+      <ResponsiveContainer width="100%" aspect={3}>
+      <BarChart
+        width={500}
+        height={300}
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barSize={20}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+      </BarChart>
+    </ResponsiveContainer> </div>
+    <div className='col-6'>
+    <ResponsiveContainer width="100%" aspect={3}>
+        <ComposedChart
+          layout="vertical"
+          width={500}
+          height={400}
+          data={data}
+          margin={{
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20,
+          }}
+        >
+          <CartesianGrid stroke="#f5f5f5" />
+          <XAxis type="number" />
+          <YAxis dataKey="name" type="category" scale="band" />
+          <Tooltip />
+          <Legend />
+          <Area dataKey="amt" fill="#8884d8" stroke="#8884d8" />
+          <Bar dataKey="value" barSize={20} fill="#413ea0" />
+          <Line dataKey="uv" stroke="#ff7300" />
+        </ComposedChart>
+      </ResponsiveContainer> </div>
       
-        </div>
-      </div>
-    </div>
-      </React.Fragment>
-      </div>
+     </div>
+     <div className='row'> 
+     <div className='col-6'>
      
+        <ResponsiveContainer width="100%" aspect={3}>
+          <BarChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+            barSize={20}
+          >
+            <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+          </BarChart>
+        </ResponsiveContainer> </div>
+        <div className='col-6'>
+        <ResponsiveContainer width="100%" aspect={3}>
+        <PieChart width={400} height={400}>
+          <Pie
+            dataKey="value"
+            startAngle={180}
+            endAngle={0}
+            data={data}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            label
+          />
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer></div></div>
+        </div>
     );
-  }
-}
-
-export default App;
-
+    
+};
+export default Charts;

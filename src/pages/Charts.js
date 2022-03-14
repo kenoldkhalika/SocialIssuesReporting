@@ -29,7 +29,9 @@ const Charts =()=>{
   
   
     return (
+
       <div >
+        <h2>{window.localStorage.getItem('name')}</h2>
       <div className='row'> 
         <div className='col-6'>
       <ResponsiveContainer width="100%" aspect={3}>
