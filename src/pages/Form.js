@@ -67,7 +67,7 @@ class IssueForm extends React.Component {
     const dateOpened = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     let openDate = dateOpened;
     let resolvedDate = " not yet";
-    let repoterMessage = " - ";
+    let repoterMessage = "  ";
     toast.configure();
 
     if (uid && name && contact && email && location && date && 
@@ -218,7 +218,7 @@ class IssueForm extends React.Component {
                <option>Mwanza</option>
                <option>Nsanje</option>
                <option>Thyolo</option>
-               <option>Phalombe</option>
+               <option>Phalombe</option> 
                <option>Mangochi</option>
                <option>Neno</option>
                </Form.Select>

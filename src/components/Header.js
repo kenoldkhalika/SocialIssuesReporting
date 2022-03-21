@@ -3,10 +3,13 @@ import {Link, useLocation} from 'react-router-dom';
 import "./Header.css"
 import Logo from './layout/Logo.png';
 import { menuItems } from "../pages/menuItems";
+import {BsPersonCircle, BsColumns } from "react-icons/bs";
 import MenuItems from "../pages/MenuItemss";
 const Header = () => {
 const [activeTab, setActiveTab] = useState("Home");
 const location =useLocation();
+
+
 
 useEffect(()=> { 
     if(location.pathname==="/"){
@@ -68,6 +71,12 @@ useEffect(()=> {
        
        <p className={`${activeTab==="About" ? "active" : ""}`}
         onClick={()=> setActiveTab("About")}> About</p>
+       
+       </Link>
+       <Link to="/login">
+       
+       <p className={`${activeTab==="Logout" ? "active" : ""}`}
+        onClick={()=> setActiveTab("Home")}><BsPersonCircle style={{marginRight:"5px", fontSize:"1.1em"}}/>({(window.localStorage.getItem('name'))})</p>
        
        </Link>
        

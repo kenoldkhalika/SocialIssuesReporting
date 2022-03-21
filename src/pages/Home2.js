@@ -1,4 +1,5 @@
 import React from 'react'
+import fireDb from "firebase";
 // import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,
   Area,YAxis, CartesianGrid, Tooltip, Pie, PieChart, Legend, ResponsiveContainer } from 'recharts';
@@ -6,11 +7,38 @@ import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,
 
 
 const Charts =()=>{
+  const issue = 300;
+  const writeUserData = () => {
+    fireDb.database()
+      .ref("/")
+    console.log("DATA SAVED");
+  };
+  
+  const getUserData = () => {
+    let ref = fireDb.database().ref("/");
+    ref.on("value", snapshot => {
+      const state = snapshot.val();
+      return state;
+    });
+    const b = 90;
+    return b;
+  };
+  const k = 900;
+  const b = () => {
+     var k = 700;
+    return k;
+  }
 
   const data = [
     {
+      name: 'Gender Marieges',
+      value: b,
+      uv:654,
+ 
+    },
+    {
       name: 'Gender based violence',
-      value: 4000,
+      value: 6000,
       uv:654,
  
     },
@@ -26,12 +54,30 @@ const Charts =()=>{
     },
     
   ];
+
+  const data1 = [
+    {name: 'Pending issues', value: 3000, uv:654,},
+    { name: 'Open issues', value: 6000, uv:654,},
+    {name: 'Resolved', value: 6000,  uv: 435, },  
+  ];
+
+  const assignData = [
+    {name: 'J.Msosa', value: 5,},
+    { name: 'K.Khalika', value: 9,},
+    {name: 'Police', value: 8, },  
+  ];
+
+  const priorityData = [
+    {name: 'Low', value: 4,},
+    { name: 'Medium', value: 6,},
+    {name: 'High', value: 3, },  
+  ];
   
   
     return (
       <div >
-      <div className='row'> 
-        <div className='col-6'>
+      <div className='row'>
+        <div className='col-6'>  <h5>Issue Subjects</h5>
       <ResponsiveContainer width="100%" aspect={3}>
       <BarChart
         width={500}
@@ -54,12 +100,13 @@ const Charts =()=>{
       </BarChart>
     </ResponsiveContainer> </div>
     <div className='col-6'>
+      <h5>Issue States</h5>
     <ResponsiveContainer width="100%" aspect={3}>
         <ComposedChart
           layout="vertical"
           width={500}
           height={400}
-          data={data}
+          data={data1}
           margin={{
             top: 20,
             right: 20,
@@ -76,17 +123,18 @@ const Charts =()=>{
           <Bar dataKey="value" barSize={20} fill="#413ea0" />
           <Line dataKey="uv" stroke="#ff7300" />
         </ComposedChart>
-      </ResponsiveContainer> </div>
+      </ResponsiveContainer>
+       </div>
       
      </div>
      <div className='row'> 
-     <div className='col-6'>
+     <div className='col-6'><h5>Issue Assign</h5>
      
         <ResponsiveContainer width="100%" aspect={3}>
           <BarChart
             width={500}
             height={300}
-            data={data}
+            data={assignData}
             margin={{
               top: 5,
               right: 30,
@@ -103,14 +151,14 @@ const Charts =()=>{
             <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
           </BarChart>
         </ResponsiveContainer> </div>
-        <div className='col-6'>
+        <div className='col-6'> <h5>Issue priority</h5>
         <ResponsiveContainer width="100%" aspect={3}>
         <PieChart width={400} height={400}>
           <Pie
             dataKey="value"
             startAngle={180}
             endAngle={0}
-            data={data}
+            data={priorityData}
             cx="50%"
             cy="50%"
             outerRadius={80}

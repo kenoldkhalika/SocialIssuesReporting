@@ -30,13 +30,14 @@ function App() {
  
   return (
    
+    
   
-    <div className="App">
-    
-    
+    <div className="App" >
        <BrowserRouter>
        <Routes>
        <Route path="/" element={<Home></Home>}/> </Routes>
+       <Routes>
+    < Route path="/login" element={<Home></Home>}/> </Routes>
    <Header/>
      
     
@@ -49,9 +50,10 @@ function App() {
        < Route path="/open" element={<Open></Open>}/>
 
        < Route path="/form" element={<Form></Form>}/>
-       < Route path="/issue-details" element={<IssueDetails></IssueDetails>}/>
+       < Route path="/issue-details" element={<IssueDetails ></IssueDetails>}/>
        < Route path="/pending" element={<Pending></Pending>}/>
        < Route path="/add" element={<AddEdit></AddEdit>}/>
+
        < Route path="/issues" element={<Issues></Issues>}/>
        < Route path="/charts" element={<IssueDetails></IssueDetails>}/>
        < Route path="/home-page" element={<Home2></Home2>}/>

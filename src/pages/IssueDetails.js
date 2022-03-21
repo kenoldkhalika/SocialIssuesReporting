@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router-dom';
 // import Form from './Form';
 import {toast} from "react-toastify";
 // import { Card } from "reactstrap";
-import Repoter from "./Repoter";
+import Repoter from "../Users/Repoter";
 import { Container, Button, Modal, Row, Col, FormGroup, Form, FormLabel, FormControl, Card } from "react-bootstrap";
+import Toggle from "./Toggle";
 
 
 // import { Form } from "./Form";
@@ -103,7 +104,7 @@ nav = () =>{
     let issueSource = issue.source;
     let issueMessage = this.refs.issueReply.value;
     let issueAssign = issue.assign;
-    let issueState = "resolved"
+    let issueState = "Resolved"
     const current = new Date();
     const dateResolved = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     let issueResolvedDate = dateResolved;
@@ -136,20 +137,22 @@ nav = () =>{
 
     const { issues} = this.state;
     return (
-      <React.Fragment>
-        <div className="container">
+      <React.Fragment >
+        <div  className="container">
           <div className="row">
         
           </div>
           <div className="row">
            
-                  </div>
+                  </div>  
+                      {/* <React.Fragment>
+        <Toggle label="Resolved" />
+      </React.Fragment> */}
                 </div>
              
           <div className="row">
             <div className="col-xl-12">
             {/* <button className="btn btn-primary mt-2"> create ticket</button> */}
-            
       
    {issues.map(issue => {
      if (issue.uid == window.localStorage.getItem('data') && issue.state1 !== 'resolved' && 
@@ -158,9 +161,9 @@ nav = () =>{
         <div>
           <div className="row">
             <div className="col-2"></div>
-              <div className="col-8">
+              <div className="col-8"> <br />
               <Card  style = {{width:'900px', paddingTop:'5px'}}>
-            <Card.Header>ASSIGN: {issue.assign}</Card.Header>
+            <Card.Header>ASSIGN: {issue.assign}  {window.localStorage.getItem('reso')} </Card.Header>
             <Card.Body>
               <Card.Title>{issue.subject} Reported by {issue.name}</Card.Title>
               
@@ -174,12 +177,32 @@ nav = () =>{
               {issue.repoterMessage} | Remark: {issue.message}
               <br />
               <Form>
+         <div className="row">
+          <div className="col 6">
+          <hr />
+           <Form.Group className="mb-3" controlId="formGridState">
+               <Col sm="12">
+               <Form.Control as="textarea" rows={3} ref = "issueReply" placeholder="Add a remark to this issue " />
+               </Col> <br />
+               {/* <Toggle/> */}
+             </Form.Group> 
+        
+          </div><Button type="submit" style={{background:"#563e7c",  }} onClick={(e)=>this.changeIssueState(issue)}>Submit</Button>
+          <div className="col 6">
+
+          </div>
+       </div>
+                        </Form>
+              {/* <Form> <div className="row">
+                <div className="col-6"></div>
+                <div className="col-6"></div>
+              </div>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Control as="textarea" rows={3} ref = "issueReply" placeholder="Add a remark to this issue " />
+                  <br /><Toggle/><Button type="submit" style={{background:"#563e7c",  }}>Submit</Button>>
                   </Form.Group>
-              </Form> 
-              <Button class="btn btn-dark" variant="primary" onClick={(e)=>this.changeIssueState(issue)}>Submit </Button>
-            </Card.Body>
+              </Form> */}
+            </Card.Body> 
             <Card.Footer className="text-muted">This issue was reported on : {issue.openDate} | resolved : {issue.resolvedDate}</Card.Footer>
 
             </Card>
@@ -207,7 +230,7 @@ nav = () =>{
             
               Email: {issue.email} | Contact: {issue.contact} | Location: {issue.location}<br />
               <h5>priority: {issue.priority}</h5> 
-              {issue.repoterMessage} | Remark: {issue.message}
+              {issue.repoterMessage} | Remark: {issue.message} {window.localStorage.getItem('reso')} {window.localStorage.getItem('data')}
               <br />
             </Card.Body>
             <Card.Footer className="text-muted">This issue was reported on : {issue.openDate} | resolved : {issue.resolvedDate}</Card.Footer>
@@ -218,10 +241,11 @@ nav = () =>{
             </div>
         </div>
       )
-     else if (window.localStorage.getItem('name') == 'repoter')
+     else if (issue.uid == window.localStorage.getItem('data') && 
+     window.localStorage.getItem('name') == 'repoter')
      
       return (
-       <div>for reporter</div>
+       <div><Repoter /></div>
      )
    })
    

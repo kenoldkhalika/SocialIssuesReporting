@@ -15,6 +15,7 @@ import { AiOutlineEdit,AiOutlineFileAdd } from "react-icons/ai";
 import {GrView} from "react-icons/gr";
 import {MdOutlineDelete} from "react-icons/md";
 import Header from "../components/Header";
+import AddOption from "./AddOption";
 
 
 class App extends React.Component {
@@ -151,6 +152,9 @@ handleSubmit = event => {
     $('#customers').slideDown();
     $('#form1').hide().delay(100).fadeOut(5000);
   }
+  forRepoter = issue =>{
+    window.localStorage.setItem('data', issue.uid);
+  }
   changeIssueState = issue =>{
     window.localStorage.setItem('data', issue.uid);
     const user = window.localStorage.getItem('name');
@@ -203,9 +207,27 @@ handleClick = () => {
 
   });
 }
+  render (){
+    return(<div>
+    dhuhuh
+      </div>
+    )
+  }
+  render (){
+    return (
+      <>hudhudd
+      </>
+    )
+    // if (window.localStorage.getItem('name') == 'repoter'){
+    //   return (
+    //     <Link to="/add">   <div className="addbutton" ><AiOutlineFileAdd/></div></Link> 
+    //   )
+    // }
+  }
   render() {
     
     const { issues } = this.state;
+
     return (
      
       <React.Fragment>
@@ -215,15 +237,19 @@ handleClick = () => {
           <div className="row">
             
           </div>
-          <div className="row">
-           
-                  </div>
-                </div>
-             
+          <div className="row">          
+                </div>  
+                < AddOption />
+                </div>             
           <div className="row"> 
             <div className="col-xl-12">
-        <Link to="/add">   <div className="addbutton" ><AiOutlineFileAdd/></div></Link>   
-            
+              {/* {issues.map(issue => {
+                if (issue.assign == "repoter" ){
+                return( <div>
+               
+
+                </div>
+                )}})}         */}
             <table id="customers"> 
    <tr>
     <th >NAME</th>
@@ -262,7 +288,7 @@ handleClick = () => {
                 // onClick={(e)=>{this.handleShowModal(issue.contact); }}
                 title="View"><i class="fa fa-table"></i><GrView></GrView></div> </Link> */}
               </li>
-
+{/* 
               <li class="list-inline-item"> 
                 <Link to="#" >  
                 <div 
@@ -270,15 +296,15 @@ handleClick = () => {
                data-toggle="tooltip" 
                  data-placement="top" title="Edit">
                 <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
-              </li>
-              <li class="list-inline-item">
+              </li> */}
+              {/* <li class="list-inline-item">
               <div onClick={(e)=>this.removeData(issue)} 
                
              data-toggle="tooltip" 
               value={issue.name}
               data-placement="top" title="Delete"><i 
               class="fa fa-trash"></i><MdOutlineDelete /></div>
-              </li>
+              </li> */}
               </ul>
                     
                     
@@ -288,7 +314,31 @@ handleClick = () => {
        </tr>
 
      )}
-   else if (user=='repoter') return (
+   else if (user=='repoter') 
+      if (issue.source == "Mobile app") return (
+        <tr href="/issue-details" >
+    <td>{issue.name }</td>
+    <td>{issue.contact}</td>
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         </li>
+         </ul>        
+       </td>
+   
+  
+  </tr>
+
+      )
+      else  return(
+     
     <tr href="/issue-details" >
     <td>{issue.name }</td>
     <td>{issue.contact}</td>
@@ -301,14 +351,9 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table"><GrView></GrView> </a>
-
-         {/* <Link to="/issue-details" >
-           <div  
-            
-         onClick={(e)=>this.changeIssueState(issue)}  
-           // onClick={(e)=>{this.handleShowModal(issue.contact); }}
-           title="View"><i class="fa fa-table"></i><GrView></GrView></div> </Link> */}
+         <a href="/issue-details" class="fa fa-table"
+          onClick={(e)=>this.forRepoter(issue)}>
+            <GrView></GrView> </a>
          </li>
 
          <li class="list-inline-item"> 
