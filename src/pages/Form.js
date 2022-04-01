@@ -304,8 +304,10 @@ class IssueForm extends React.Component {
            <Form.Group as={Row} className="mb-3" controlId="formGridState">
                <Form.Label column sm="2">Priority</Form.Label>
                <Col sm="10">
-               <Form.Select defaultValue="Midium" required>
-                 <option>Midium</option>
+               <Form.Select defaultValue="Medium" required>
+                 <option>Medium
+  
+                 </option>
                  <option>Low</option>
                  <option>High</option>
                </Form.Select>

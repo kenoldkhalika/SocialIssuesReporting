@@ -174,7 +174,8 @@ nav = () =>{
               Email: {issue.email} | Contact: {issue.contact} | District: {issue.location}<br />
               T/A: {issue.ta}  | Village: {issue.village}
               <h5>priority: {issue.priority}</h5> 
-              {issue.repoterMessage} | Remark: {issue.message}
+               <p >Remark: {issue.message} | Victim Message: {issue.repoterMessage}</p>
+              
               <br />
               <Form>
          <div className="row">
@@ -187,7 +188,7 @@ nav = () =>{
                {/* <Toggle/> */}
              </Form.Group> 
         
-          </div><Button type="submit" style={{background:"#563e7c",  }} onClick={(e)=>this.changeIssueState(issue)}>Submit</Button>
+          </div><Button type="submit" style={{background:"#563e7c",}} onClick={(e)=>this.changeIssueState(issue)}>Submit</Button>
           <div className="col 6">
 
           </div>

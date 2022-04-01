@@ -1,5 +1,7 @@
 import React from 'react'
 import fireDb from "firebase";
+import Issues from './Issues'; 
+import Visualization from './Visualization';
 // import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,
   Area,YAxis, CartesianGrid, Tooltip, Pie, PieChart, Legend, ResponsiveContainer } from 'recharts';
@@ -7,7 +9,10 @@ import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,
 
 
 const Charts =()=>{
+  <Visualization />
+  const subject = window.localStorage.getItem("subjectCo")
   const issue = 300;
+  
   const writeUserData = () => {
     fireDb.database()
       .ref("/")
@@ -32,7 +37,7 @@ const Charts =()=>{
   const data = [
     {
       name: 'Gender Marieges',
-      value: b,
+      value: 20,
       uv:654,
  
     },
@@ -44,7 +49,7 @@ const Charts =()=>{
     },
     {
       name: 'Child abuse',
-      value: 6000,
+      value: subject,
       uv: 435,
     },
     {
@@ -75,7 +80,7 @@ const Charts =()=>{
   
   
     return (
-      <div >
+      <div > 
       <div className='row'>
         <div className='col-6'>  <h5>Issue Subjects</h5>
       <ResponsiveContainer width="100%" aspect={3}>

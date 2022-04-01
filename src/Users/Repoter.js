@@ -16,7 +16,7 @@ class Repoter extends React.Component{
       let priority = this.refs.priority.value;
       let assign = this.refs.assign.value;
       let uid = window.localStorage.getItem('data');
-      console.log(uid);
+      // console.log(uid);
     
         const { issues } = this.state;
         const devIndex = issues.findIndex(data => {
@@ -51,17 +51,19 @@ class Repoter extends React.Component{
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {
       const state = snapshot.val();
-      console.log(state);
+      // console.log(state);
       this.setState(state);
     });
   };
+
+
+
     render(){
         const { issues} = this.state;
 
         return (
           
             <div style={{background:"#f0f0f0"}}> <br /> 
-          {window.localStorage.getItem('data')}
             {issues.map(issue => {
               if (issue.uid == window.localStorage.getItem('data') 
               && window.localStorage.getItem('name') == 'repoter' && issue.source !== "Mobile app"){
@@ -118,7 +120,7 @@ class Repoter extends React.Component{
                <Form.Label column sm="2">Priority</Form.Label>
                <Col sm="10">
                <Form.Select defaultValue="Gender based violence" ref="priority" required>
-               <option>Midium</option>
+               <option>Medium</option>
                  <option>Low</option>
                  <option>High</option> 
                </Form.Select>

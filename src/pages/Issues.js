@@ -86,7 +86,31 @@ handleSubmit = event => {
   componentDidMount() {
     this.getUserData();
     this.handleClick();
+    this.getNumberOfDays();
+    this.getUserData1();
   }
+
+  getNumberOfDays = () =>{
+    // JavaScript program to illustrate
+// calculation of no. of days between two date
+
+// To set two dates to two variables
+var date1 = new Date("06/30/2019");
+var date2 = new Date("07/30/2019");
+
+// To calculate the time difference of two dates
+var Difference_In_Time = date2.getTime() - date1.getTime();
+
+// To calculate the no. of days between two dates
+var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+//To display the final no. of days (result)
+console.log("Total number of days between dates <br>"
+			+ date1 + "<br> and <br>"
+			+ date2 + " is: <br> "
+			+ Difference_In_Days);
+// console.log("Justine");
+}
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
@@ -100,7 +124,21 @@ handleSubmit = event => {
       .set(this.state);
     console.log("DATA SAVED");
   };
-  
+  getUserData1 = () => {
+    let ref = fireDb.database().ref("issues");
+    // ref.on("value", snapshot => {
+    //   const state = snapshot.val();
+    //   this.setState(state);
+    //   console.log(snapshot.val());
+    //   console.log(snapshot.ref.toString());
+    // });
+    ref.orderByChild("subject").equalTo("Gender based violence").on("child_added", (snap) => {
+      console.log(snap.val());
+      console.log(snap.key);
+      window.localStorage.setItem('subjectCo', snap.key);
+  });
+  };
+
   getUserData = () => {
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {
@@ -108,6 +146,14 @@ handleSubmit = event => {
       this.setState(state);
     });
   };
+
+
+//   ref.orderByChild("contact").on("child_added", snap => {
+//     console.log(snap.val());
+//    });
+//    ref.orderByChild("name").startAt("Mike Msosa").on("child_added", (snap) => {
+//     console.log(snap.val());
+// });
 
   removeData = issue => {
     const { issues } = this.state;
@@ -473,8 +519,8 @@ handleClick = () => {
            <Form.Group as={Row} className="mb-3" controlId="formGridState">
                <Form.Label column sm="2">Priority</Form.Label>
                <Col sm="10">
-               <Form.Select defaultValue="Midium">
-                 <option>Midium</option>
+               <Form.Select defaultValue="Medium">
+                 <option>Medium</option>
                  <option>Low</option>
                  <option>High</option>
                </Form.Select>
