@@ -95,7 +95,7 @@ ref.orderByChild("state1").equalTo("pending").on("child_added", (snap) => {
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var re = 0;
-ref.orderByChild("state1").equalTo("Resolved").on("child_added", (snap) => {
+ref.orderByChild("state1").equalTo("resolved").on("child_added", (snap) => {
   re = re+1;
 });
  window.localStorage.setItem('RE', re);
