@@ -33,7 +33,7 @@ useEffect(()=> {
        <Link to="/home-page"> 
        
        <p className={`${activeTab==="Home" ? "active" : ""}`}
-        onClick={()=> setActiveTab("Home")}> Home</p>
+        onClick={()=> setActiveTab("Home")}> Dashboard</p>
        
        </Link>
 

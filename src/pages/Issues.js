@@ -87,7 +87,7 @@ handleSubmit = event => {
     this.getUserData();
     this.handleClick();
     this.getNumberOfDays();
-    this.getUserData1();
+    // this.getUserData1();
   }
 
   getNumberOfDays = () =>{
@@ -124,20 +124,24 @@ console.log("Total number of days between dates <br>"
       .set(this.state);
     console.log("DATA SAVED");
   };
-  getUserData1 = () => {
-    let ref = fireDb.database().ref("issues");
-    // ref.on("value", snapshot => {
-    //   const state = snapshot.val();
-    //   this.setState(state);
-    //   console.log(snapshot.val());
-    //   console.log(snapshot.ref.toString());
-    // });
-    ref.orderByChild("subject").equalTo("Gender based violence").on("child_added", (snap) => {
-      console.log(snap.val());
-      console.log(snap.key);
-      window.localStorage.setItem('subjectCo', snap.key);
-  });
-  };
+  // getUserData1 = () => {
+  //   let ref = fireDb.database().ref("issues");
+  //   // ref.on("value", snapshot => {
+  //   //   const state = snapshot.val();
+  //   //   this.setState(state);
+  //   //   console.log(snapshot.val());
+  //   //   console.log(snapshot.ref.toString());
+  //   // });
+  //   var k = 0
+  //   ref.orderByChild("subject").equalTo("Gender based violence").on("child_added", (snap) => {
+  //     console.log(snap.val());
+  //     // console.log(snap.key);
+  //     window.localStorage.setItem('subjectCo', "98");
+  //     k = k+1;
+  // });
+  //  console.log(k);
+  //  return k;
+  // };
 
   getUserData = () => {
     let ref = fireDb.database().ref("/");
@@ -298,6 +302,7 @@ handleClick = () => {
                 )}})}         */}
             <table id="customers"> 
    <tr>
+   {/* <th >#</th> */}
     <th >NAME</th>
      <th>CONTACT</th>
      <th>SUBJECT</th>
@@ -310,10 +315,12 @@ handleClick = () => {
    <tbody>
    {issues.map(issue => {
      const user = window.localStorage.getItem('name');
+     const number = 0;
      if (issue.assign == user ){
      return(
       //  <div>
-       <tr href="/issue-details" onClick={(e)=>this.changeIssueState(issue)}>
+       <tr>
+         {/* <td>60</td> */}
          <td>{issue.name }</td>
          <td>{issue.contact}</td>
          <td>{issue.subject}</td>
@@ -493,6 +500,8 @@ handleClick = () => {
                <Form.Select defaultValue="Gender based violence" ref="subject">
                <option>Gender based violence</option>
                <option>Child abuse</option>
+               <option>Child labor</option>
+               <option>Child marriages</option>
                </Form.Select>
                </Col>
              </Form.Group>

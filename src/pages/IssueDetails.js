@@ -102,7 +102,7 @@ nav = () =>{
     let issueDescription = issue.issueDescription;
     let issuePriority = issue.priority;
     let issueSource = issue.source;
-    let issueMessage = this.refs.issueReply.value;
+    let issueMessage ="Remark: "+this.refs.issueReply.value;
     let issueAssign = issue.assign;
     let issueState = "Resolved"
     const current = new Date();
@@ -174,7 +174,7 @@ nav = () =>{
               Email: {issue.email} | Contact: {issue.contact} | District: {issue.location}<br />
               T/A: {issue.ta}  | Village: {issue.village}
               <h5>priority: {issue.priority}</h5> 
-               <p >Remark: {issue.message} | Victim Message: {issue.repoterMessage}</p>
+               <p >{issue.message} {issue.repoterMessage}</p>
               
               <br />
               <Form>

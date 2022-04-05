@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import fireDb from "firebase";
 import Issues from './Issues'; 
 import Visualization from './Visualization';
@@ -18,7 +18,122 @@ const Charts =()=>{
       .ref("/")
     console.log("DATA SAVED");
   };
+
+  useEffect(()=>{
+      let ref = fireDb.database().ref("issues");
+      var c = 0
+      ref.orderByChild("subject").equalTo("Child abuse").on("child_added", (snap) => {
+        c = c+1;
+    });
+     window.localStorage.setItem('ChildAbuse', c);
+     return c;
+  },[])
+
+  useEffect(()=>{
+    let ref = fireDb.database().ref("issues");
+    var gb = 0
+    ref.orderByChild("subject").equalTo("Gender based violence").on("child_added", (snap) => {
+      gb = gb+1;
+  });
+   console.log(gb);
+   window.localStorage.setItem('gender', gb);
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var cl = 0
+  ref.orderByChild("subject").equalTo("Child labor").on("child_added", (snap) => {
+    cl = cl+1;
+});
+ window.localStorage.setItem('ChildLabor', cl);
+
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var gm = 0;
+ref.orderByChild("subject").equalTo("Child marriages").on("child_added", (snap) => {
+  gm = gm+1;
+});
+ window.localStorage.setItem('ChildMarieges', gm);
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var jm = 0;
+ref.orderByChild("assign").equalTo("J.Msosa").on("child_added", (snap) => {
+  jm = jm+1;
+});
+ window.localStorage.setItem('JM', jm);
+},[])
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var kh = 0;
+ref.orderByChild("assign").equalTo("K.Khalika").on("child_added", (snap) => {
+  kh = kh+1;
+});
+ window.localStorage.setItem('KH', kh);
+},[])
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var rp = 0;
+ref.orderByChild("assign").equalTo("Repoter").on("child_added", (snap) => {
+  rp = rp+1;
+});
+ window.localStorage.setItem('RP', rp);
+},[])
+
+//for state
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var pe = 0;
+ref.orderByChild("state1").equalTo("pending").on("child_added", (snap) => {
+  pe = pe+1;
+});
+ window.localStorage.setItem('PE', pe);
+},[])
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var re = 0;
+ref.orderByChild("state1").equalTo("Resolved").on("child_added", (snap) => {
+  re = re+1;
+});
+ window.localStorage.setItem('RE', re);
+},[])
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var op = 0;
+ref.orderByChild("state1").equalTo("open").on("child_added", (snap) => {
+  op = op+1;
+});
+ window.localStorage.setItem('OP', op);
+},[])
   
+//for priority
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var lo = 0;
+ref.orderByChild("priority").equalTo("low").on("child_added", (snap) => {
+  lo = lo+1;
+});
+ window.localStorage.setItem('LO', lo);
+},[])
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var me = 0;
+ref.orderByChild("priority").equalTo("Medium").on("child_added", (snap) => {
+  me = me+1;
+});
+ window.localStorage.setItem('ME', me);
+},[])
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var hi = 0;
+ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
+  hi = hi+1;
+});
+ window.localStorage.setItem('HI', hi);
+},[])
   const getUserData = () => {
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {
@@ -36,46 +151,46 @@ const Charts =()=>{
 
   const data = [
     {
-      name: 'Gender Marieges',
-      value: 20,
+      name: 'Child Marieges',
+      value: window.localStorage.getItem("ChildMarieges"),
       uv:654,
  
     },
     {
       name: 'Gender based violence',
-      value: 6000,
+      value:window.localStorage.getItem("gender"),
       uv:654,
  
     },
     {
       name: 'Child abuse',
-      value: subject,
+      value: window.localStorage.getItem("ChildAbuse"),
       uv: 435,
     },
     {
       name: 'Child labor',
-      value: 3000,
+      value: window.localStorage.getItem("ChildLabor"),
       uv: 774,
     },
     
   ];
 
   const data1 = [
-    {name: 'Pending issues', value: 3000, uv:654,},
-    { name: 'Open issues', value: 6000, uv:654,},
-    {name: 'Resolved', value: 6000,  uv: 435, },  
+    {name: 'Pending issues', value: window.localStorage.getItem("PE"), },
+    { name: 'Open issues', value: window.localStorage.getItem("OP"),},
+    {name: 'Resolved', value: window.localStorage.getItem("RE"),},  
   ];
 
   const assignData = [
-    {name: 'J.Msosa', value: 5,},
-    { name: 'K.Khalika', value: 9,},
-    {name: 'Police', value: 8, },  
+    {name: 'J.Msosa', value: window.localStorage.getItem("JM"),},
+    { name: 'K.Khalika', value: window.localStorage.getItem("KH"),},
+    {name: 'Repoter', value:window.localStorage.getItem("RP"), },  
   ];
 
   const priorityData = [
-    {name: 'Low', value: 4,},
-    { name: 'Medium', value: 6,},
-    {name: 'High', value: 3, },  
+    {name: 'Low', value: window.localStorage.getItem("LO"),},
+    { name: 'Medium', value: window.localStorage.getItem("ME"),},
+    {name: 'High', value: window.localStorage.getItem("HI"), },  
   ];
   
   
