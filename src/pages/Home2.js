@@ -77,7 +77,7 @@ ref.orderByChild("assign").equalTo("K.Khalika").on("child_added", (snap) => {
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var rp = 0;
-ref.orderByChild("assign").equalTo("Repoter").on("child_added", (snap) => {
+ref.orderByChild("assign").equalTo("reporter").on("child_added", (snap) => {
   rp = rp+1;
 });
  window.localStorage.setItem('RP', rp);
@@ -111,15 +111,17 @@ ref.orderByChild("state1").equalTo("open").on("child_added", (snap) => {
   
 //for priority
 useEffect(()=>{
-  let ref = fireDb.database().ref("issues");
+  let ref = fireDb.database().ref("Issues");
   var lo = 0;
-ref.orderByChild("priority").equalTo("low").on("child_added", (snap) => {
+ref.orderByChild("priority").equalTo("Low").on("child_added", (snap) => {
   lo = lo+1;
 });
  window.localStorage.setItem('LO', lo);
+ console.log(lo);
 },[])
+
 useEffect(()=>{
-  let ref = fireDb.database().ref("issues");
+  let ref = fireDb.database().ref("Issues");
   var me = 0;
 ref.orderByChild("priority").equalTo("Medium").on("child_added", (snap) => {
   me = me+1;
@@ -127,7 +129,7 @@ ref.orderByChild("priority").equalTo("Medium").on("child_added", (snap) => {
  window.localStorage.setItem('ME', me);
 },[])
 useEffect(()=>{
-  let ref = fireDb.database().ref("issues");
+  let ref = fireDb.database().ref("Issues");
   var hi = 0;
 ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
   hi = hi+1;
@@ -151,7 +153,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
 
   const data = [
     {
-      name: 'Child Marieges',
+      name: 'Child Marriages',
       value: window.localStorage.getItem("ChildMarieges"),
       uv:654,
  
@@ -184,15 +186,14 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
   const assignData = [
     {name: 'J.Msosa', value: window.localStorage.getItem("JM"),},
     { name: 'K.Khalika', value: window.localStorage.getItem("KH"),},
-    {name: 'Repoter', value:window.localStorage.getItem("RP"), },  
+    {name: 'Admin', value:window.localStorage.getItem("RP"), },  
   ];
 
   const priorityData = [
-    {name: 'Low', value: window.localStorage.getItem("LO"),},
-    { name: 'Medium', value: window.localStorage.getItem("ME"),},
-    {name: 'High', value: window.localStorage.getItem("HI"), },  
+    {name: 'Low', Issues: 7,},
+    { name: 'Medium', Issues: parseInt(window.localStorage.getItem("ME")),},
+    {name: 'High', Issues: parseInt(window.localStorage.getItem("HI")),},  
   ];
-  
   
     return (
       <div > 
@@ -220,7 +221,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
       </BarChart>
     </ResponsiveContainer> </div>
     <div className='col-6'>
-      <h5>Issue States</h5>
+      <h5>Issue Status</h5>
     <ResponsiveContainer width="100%" aspect={3}>
         <ComposedChart
           layout="vertical"
@@ -239,9 +240,9 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
           <YAxis dataKey="name" type="category" scale="band" />
           <Tooltip />
           <Legend />
-          <Area dataKey="amt" fill="#8884d8" stroke="#8884d8" />
+          {/* <Area dataKey="amt" fill="#8884d8" stroke="#8884d8" /> */}
           <Bar dataKey="value" barSize={20} fill="#413ea0" />
-          <Line dataKey="uv" stroke="#ff7300" />
+          {/* <Line dataKey="uv" stroke="#ff7300" /> */}
         </ComposedChart>
       </ResponsiveContainer>
        </div>
@@ -271,7 +272,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
             <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
           </BarChart>
         </ResponsiveContainer> </div>
-        <div className='col-6'> <h5>Issue priority</h5>
+        <div className='col-6'> <h5></h5>
         <ResponsiveContainer width="100%" aspect={3}>
         <PieChart width={400} height={400}>
           <Pie

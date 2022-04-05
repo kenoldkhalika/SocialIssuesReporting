@@ -308,7 +308,7 @@ handleClick = () => {
      <th>SUBJECT</th>
      <th>LOCATION</th>
     <th>DATE</th>
-    <th>STATE</th>
+    <th>STATUS</th>
     <th>ASSIGN</th>
     <th>ACTIONS</th>
    </tr>

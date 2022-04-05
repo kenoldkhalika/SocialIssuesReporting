@@ -57,39 +57,6 @@ class IssueDetails extends React.Component {
 nav = () =>{
  
 }
-// getData = () =>{
-//   toast.configure();
-//   let ref = fireDb.database().ref("/");
-//   ref.child("issues").orderByChild("name").equalTo("hyydgy7").on("child_added", snapshot => {
-//     const state = snapshot.val();
-//     const name1 = "Justine";
-//      this.setState(state);
-//     toast(name1,
-//     {position:toast.POSITION.TOP_CENTER, autoClose:1500})
-//   });   
-// }; 
-
-// nice = () =>{
-//   let Justine = {name: "Jusine", Surname: "Msosa"};
-//   // this.setState(Justine)
-//   toast("Justine",
-//     {position:toast.POSITION.TOP_CENTER, autoClose:1500})
-
-// }
- 
-
-  // updateData = issue => {
-  //   this.refs.uid.value = issue.uid;
-  //   this.refs.name.value = issue.name;
-  //   this.refs.subject.value = issue.subject;
-  //   this.refs.contact.value = issue.contact;
-  //   this.refs.email.value = issue.email;
-  //  //  this.refs.email.value = issue.email;
-  //    this.refs.location.value = issue.location;
-  //   this.refs.date.value = issue.date;
-  //    this.refs.issueDescription.value = issue.issueDescription;
-  // };
-  // const navigate = useNavigate();
   changeIssueState = issue =>{
     
     let issueId = issue.uid;
@@ -104,7 +71,7 @@ nav = () =>{
     let issueSource = issue.source;
     let issueMessage ="Remark: "+this.refs.issueReply.value;
     let issueAssign = issue.assign;
-    let issueState = "Resolved"
+    let issueState = "resolved"
     const current = new Date();
     const dateResolved = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     let issueResolvedDate = dateResolved;
@@ -155,7 +122,7 @@ nav = () =>{
             {/* <button className="btn btn-primary mt-2"> create ticket</button> */}
       
    {issues.map(issue => {
-     if (issue.uid == window.localStorage.getItem('data') && issue.state1 !== 'resolved' && 
+     if (issue.uid == window.localStorage.getItem('data') && 
      window.localStorage.getItem('name') !== 'repoter')
      return(
         <div>
@@ -204,7 +171,7 @@ nav = () =>{
                   </Form.Group>
               </Form> */}
             </Card.Body> 
-            <Card.Footer className="text-muted">This issue was reported on : {issue.openDate} | resolved : {issue.resolvedDate}</Card.Footer>
+            <Card.Footer className="text-muted">This issue reported  : {issue.numberDays} day(s) ago | resolved : {issue.resolvedDate}</Card.Footer>
 
             </Card>
             </div>
@@ -213,35 +180,35 @@ nav = () =>{
         </div>
 
      )
-     else if (issue.uid == window.localStorage.getItem('data') && issue.state1 == 'resolved'
-     && window.localStorage.getItem('name') !== 'repoter')
-      return(
-        <div>
-          <div className="row">
-            <div className="col-2"></div>
-              <div className="col-8">
-              <Card  style = {{width:'900px', paddingTop:'5px'}}>
-            <Card.Header>ASSIGN: {issue.assign}</Card.Header>
-            <Card.Body>
-              <Card.Title>{issue.subject} Reported by {issue.name}</Card.Title>
+    //  else if (issue.uid == window.localStorage.getItem('data') && issue.state1 == 'resolved'
+    //  && window.localStorage.getItem('name') !== 'repoter')
+    //   return(
+    //     <div>
+    //       <div className="row">
+    //         <div className="col-2"></div>
+    //           <div className="col-8">
+    //           <Card  style = {{width:'900px', paddingTop:'5px'}}>
+    //         <Card.Header>ASSIGN: {issue.assign}</Card.Header>
+    //         <Card.Body>
+    //           <Card.Title>{issue.subject} Reported by {issue.name}</Card.Title>
               
-              <Card.Text>
-                {issue.issueDescription} on {issue.date}
-              </Card.Text> <hr />
+    //           <Card.Text>
+    //             {issue.issueDescription} on {issue.date}
+    //           </Card.Text> <hr />
             
-              Email: {issue.email} | Contact: {issue.contact} | Location: {issue.location}<br />
-              <h5>priority: {issue.priority}</h5> 
-              {issue.repoterMessage} | Remark: {issue.message} {window.localStorage.getItem('reso')} {window.localStorage.getItem('data')}
-              <br />
-            </Card.Body>
-            <Card.Footer className="text-muted">This issue was reported on : {issue.openDate} | resolved : {issue.resolvedDate}</Card.Footer>
+    //           Email: {issue.email} | Contact: {issue.contact} | Location: {issue.location}<br />
+    //           <h5>priority: {issue.priority}</h5> 
+    //           {issue.repoterMessage} | Remark: {issue.message} {window.localStorage.getItem('reso')} {window.localStorage.getItem('data')}
+    //           <br />
+    //         </Card.Body>
+    //         <Card.Footer className="text-muted">This issue was reported on : {issue.openDate} | resolved : {issue.resolvedDate}</Card.Footer>
 
-            </Card>
-            </div>
-              <div className="col-2"></div>
-            </div>
-        </div>
-      )
+    //         </Card>
+    //         </div>
+    //           <div className="col-2"></div>
+    //         </div>
+    //     </div>
+    //   )
      else if (issue.uid == window.localStorage.getItem('data') && 
      window.localStorage.getItem('name') == 'repoter')
      

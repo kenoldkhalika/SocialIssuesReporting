@@ -11,7 +11,7 @@ class Repoter extends React.Component{
             issues: [],
         }
     }
-    handleSubmit = event => {
+    handleSubmit1 = event => {
       event.preventDefault();
       let priority = this.refs.priority.value;
       let assign = this.refs.assign.value;
@@ -27,6 +27,60 @@ class Repoter extends React.Component{
          issues[devIndex].priority = priority;
         this.setState({ issues });
       
+    };
+
+    handleSubmit = issue => {
+    let issueId = issue.uid;
+    let issueName = issue.name;
+    let issueSubject = issue.subject;
+    let IssueState = issue.state1;
+    
+  
+    const current = new Date();
+    const dateResolved = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
+    const Difference_In_Time1 = `${current.getTime()}`;
+    const Difference_In_Time2 = issue.date - Difference_In_Time1;
+    var date1 = new Date(dateResolved.toString());
+    var date2 = new Date(issue.openDate.toString());
+    var time1 = date1.getTime() - date2.getTime();
+    console.log(Difference_In_Time1);
+    var Difference_In_Days = time1 / (1000 * 60 * 60 * 24);
+
+    
+    let issueContact = issue.contact;
+    let issueEmail = issue.email;
+    let issueLocation = issue.location;
+
+    let issueDate = issue.date;
+    let issueDescription = issue.issueDescription;
+    let issuePriority = this.refs.priority.value;
+    let issueSource = issue.source;
+    let issueAssign = this.refs.assign.value;;
+    let issueState = issue.state1;
+    console.log(issue.uid);
+    const { issues } = this.state;
+    const devIndex = issues.findIndex(data => {
+        return data.uid === issueId;
+      });
+     
+      issues[devIndex].name = issueName;
+      issues[devIndex].contact = issueContact;
+      issues[devIndex].email = issueEmail;
+      issues[devIndex].subject = issueSubject;
+      issues[devIndex].email = issueEmail;
+      issues[devIndex].location = issueLocation;
+      issues[devIndex].date = issueDate;
+      issues[devIndex].issueDescription = issueDescription;
+      issues[devIndex].priority = issuePriority;
+      issues[devIndex].source = issueSource;
+      issues[devIndex].subject = issueSubject;
+
+      issues[devIndex].state1 = IssueState;
+      issues[devIndex].assign = issueAssign;
+      this.setState({ issues });
+
+
+
     };
  // const navigate = useNavigate();
  componentDidMount() {
@@ -112,7 +166,7 @@ class Repoter extends React.Component{
                       
                         Email: {issue.email} | Contact: {issue.contact} | Location: {issue.location}<br />
                         <h5>priority: {issue.priority}</h5> 
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form >
          <div className="row">
           <div className="col 6">
           <hr />
@@ -135,7 +189,7 @@ class Repoter extends React.Component{
                  <option>K.Khalika</option>
                </Form.Select>
                </Col>
-             </Form.Group>  <Button type="submit" style={{background:"#563e7c",  }}>Submit</Button>
+             </Form.Group>  <Button type="submit" style={{background:"#563e7c",  }} onClick={(e)=>this.handleSubmit(issue)}>Submit</Button>
           <div className="col 6">
 
           </div>

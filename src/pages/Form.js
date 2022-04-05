@@ -57,22 +57,23 @@ class IssueForm extends React.Component {
     let date = this.refs.date.value;
     let issueDescription = this.refs.issueDescription.value;
     let subject = this.refs.subject.value;
-    let priority = "low";
+    let priority = this.refs.priority.value;
     let source = "Web app";
     let state1 = "pending"
     let assign = this.refs.assign.value;
     let uid = this.refs.uid.value;
     let message = "Your issue will be handled soon";
     const current = new Date();
-    const dateOpened = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const dateOpened = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
     let openDate = dateOpened;
     let resolvedDate = " not yet";
     let repoterMessage = "  ";
+    let numberDays = " ";
     toast.configure();
 
     if (uid && name && contact && email && location && date && 
       issueDescription && subject && state1 && assign && message
-       && openDate && resolvedDate && repoterMessage && ta && village) {
+       && openDate && resolvedDate && repoterMessage && ta && village && numberDays) {
       const { issues } = this.state;
       const devIndex = issues.findIndex(data => {
         return data.uid === uid;
@@ -80,6 +81,7 @@ class IssueForm extends React.Component {
        
       issues[devIndex].name = name;
       issues[devIndex].ta = ta;
+      issues[devIndex].numberDays = numberDays;
       issues[devIndex].village = village;
       issues[devIndex].contact = contact;
       issues[devIndex].email = email;
@@ -90,7 +92,7 @@ class IssueForm extends React.Component {
       issues[devIndex].date = date;
       issues[devIndex].assign = assign;
       issues[devIndex].message = message;
-      issues[devIndex].openDate = openDate;
+      issues[devIndex].openDate = openDate; 
       issues[devIndex].resolvedDate = resolvedDate;
       issues[devIndex].repoterMessage = repoterMessage;
       issues[devIndex].issueDescription = issueDescription;
@@ -100,7 +102,7 @@ class IssueForm extends React.Component {
       const { issues } = this.state;
       issues.push({ uid, name, contact, email, location, date, 
         issueDescription, subject, priority, source, state1, 
-        assign, message, openDate, resolvedDate,ta, village, repoterMessage});
+        assign, message, openDate, resolvedDate,ta, village, repoterMessage, numberDays});
       this.setState({ issues });
      
         toast('added successfully',
@@ -304,7 +306,7 @@ class IssueForm extends React.Component {
            <Form.Group as={Row} className="mb-3" controlId="formGridState">
                <Form.Label column sm="2">Priority</Form.Label>
                <Col sm="10">
-               <Form.Select defaultValue="Medium" required>
+               <Form.Select defaultValue="Medium" required ref='priority'>
                  <option>Medium
   
                  </option>

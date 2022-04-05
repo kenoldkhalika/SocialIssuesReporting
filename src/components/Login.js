@@ -85,7 +85,7 @@ export const LoginForm = ({ formSwitcher }) =>{
 		}
 
         else {
-            return alert("incorect password")
+            return alert("incorrect password")
         }
 	};
     
@@ -95,7 +95,7 @@ export const LoginForm = ({ formSwitcher }) =>{
             <Row>
                 <Col>
                  {/* <h5 style={{float:'left', }} className="logo"> <img src={Logo} alt="Logo" width="50px" /> </h5>  */}
-                    <h1  className="text-inf ">SSRT LOGIN</h1>
+                    <h1  className="text-inf ">SSRT SYSTEM</h1>
                     < hr className="line"/>
                    
                 <Form className="text-left" autoComplete="off" onSubmit={handleOnSubmit}>
