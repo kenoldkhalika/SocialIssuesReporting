@@ -171,7 +171,7 @@ nav = () =>{
                   </Form.Group>
               </Form> */}
             </Card.Body> 
-            <Card.Footer className="text-muted">This issue reported  : {issue.numberDays} day(s) ago | resolved : {issue.resolvedDate}</Card.Footer>
+            <Card.Footer className="text-muted">This issue was reported on : {issue.openDate} | resolved : {issue.resolvedDate}</Card.Footer>
 
             </Card>
             </div>
