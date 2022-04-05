@@ -186,7 +186,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
   const assignData = [
     {name: 'J.Msosa', value: window.localStorage.getItem("JM"),},
     { name: 'K.Khalika', value: window.localStorage.getItem("KH"),},
-    {name: 'Admin', value:window.localStorage.getItem("RP"), },  
+    {name: 'Mike', value:window.localStorage.getItem("RP"), },  
   ];
 
   const priorityData = [

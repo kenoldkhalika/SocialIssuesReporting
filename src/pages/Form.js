@@ -172,7 +172,7 @@ class IssueForm extends React.Component {
                ref="name"
                className="form-control"
                required
-               placeholder="Full Name"/>
+               placeholder=" victim's full Name"/>
          </Form.Group>
            <br />
         <div className="row">

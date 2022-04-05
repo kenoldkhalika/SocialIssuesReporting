@@ -4,6 +4,7 @@ import $ from 'jquery'
 import './Home.css';
 import fireDb from "firebase";
 import {toast} from "react-toastify";
+// import Header from "../components/Header";
 import IssueDetails from './IssueDetails';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -281,7 +282,7 @@ handleClick = () => {
     return (
      
       <React.Fragment>
-         {/* <Header/> */}
+       
         
         <div className="container">
           <div className="row">

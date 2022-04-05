@@ -8,10 +8,13 @@
 // export default About;
 import React from "react";
 import background1 from './assets/img/background1.jpg'
+import Header from "../components/Header";
 import './About.css'
 function About(){
   return(
+   
     <div>
+       {/* <Header/> */}
      <section className="about">
        <div className="main">
        <img src={background1}/>
