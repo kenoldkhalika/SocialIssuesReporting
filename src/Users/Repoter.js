@@ -11,7 +11,7 @@ class Repoter extends React.Component{
             issues: [],
         }
     }
-    handleSubmit1 = event => {
+    handleSubmit = event => {
       event.preventDefault();
       let priority = this.refs.priority.value;
       let assign = this.refs.assign.value;
@@ -26,10 +26,11 @@ class Repoter extends React.Component{
          issues[devIndex].assign = assign;
          issues[devIndex].priority = priority;
         this.setState({ issues });
+        console.log("kjjajaja");
       
     };
 
-    handleSubmit = issue => {
+    handleSubmit11 = issue => {
     let issueId = issue.uid;
     let issueName = issue.name;
     let issueSubject = issue.subject;
@@ -189,7 +190,8 @@ class Repoter extends React.Component{
                  <option>K.Khalika</option>
                </Form.Select>
                </Col>
-             </Form.Group>  <Button type="submit" style={{background:"#563e7c",  }} onClick={(e)=>this.handleSubmit(issue)}>Submit</Button>
+             </Form.Group> 
+              <Button type="submit" style={{background:"#563e7c",  }} onClick={(e)=>this.handleSubmit(issue)}>Submit</Button>
           <div className="col 6">
 
           </div>
