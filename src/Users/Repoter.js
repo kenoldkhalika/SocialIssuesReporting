@@ -149,10 +149,12 @@ class Repoter extends React.Component{
                     </div>
                     
                 </div>
-                ) } else  if (issue.uid == window.localStorage.getItem('data') 
+                ) }
+                else if (issue.uid == window.localStorage.getItem('data') 
                 && window.localStorage.getItem('name') == 'repoter' && issue.source == "Mobile app"){
                   return (
-                    <div > 
+                  
+                    <div >  <h1>{issue.id}</h1> 
                     <div className="row">
                       <div className="col-2"></div>
                         <div className="col-8">
@@ -191,7 +193,7 @@ class Repoter extends React.Component{
                </Form.Select>
                </Col>
              </Form.Group> 
-              <Button type="submit" style={{background:"#563e7c",  }} onClick={(e)=>this.handleSubmit(issue)}>Submit</Button>
+              <Button style={{background:"#563e7c",  }} onClick={(e)=>this.handleSubmit11(issue)}>Submit</Button>
           <div className="col 6">
 
           </div>
@@ -208,6 +210,11 @@ class Repoter extends React.Component{
                   </div>
 
                   )}
+                  else {
+                    return (
+                      <></>
+                    )
+                  }
                 
                })} 
          
