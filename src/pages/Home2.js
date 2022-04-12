@@ -77,7 +77,7 @@ ref.orderByChild("assign").equalTo("K.Khalika").on("child_added", (snap) => {
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var rp = 0;
-ref.orderByChild("assign").equalTo(" ").on("child_added", (snap) => {
+ref.orderByChild("assign").equalTo("reporter").on("child_added", (snap) => {
   rp = rp+1;
 });
  window.localStorage.setItem('RP', rp);
