@@ -203,13 +203,13 @@ console.log("Total number of days between dates <br>"
     $('#customers').slideDown();
     $('#form1').hide().delay(100).fadeOut(5000);
   }
-  forRepoter = issue =>{
+  forAdmin = issue =>{
     window.localStorage.setItem('data', issue.uid);
   }
   changeIssueState = issue =>{
     window.localStorage.setItem('data', issue.uid);
     const user = window.localStorage.getItem('name');
-    if (issue.state1 !== 'resolved' && user !== "reporter" ){
+    if (issue.state1 !== 'resolved' && user !== "Admin" ){
     let issueId = issue.uid;
     let issueName = issue.name;
     let issueSubject = issue.subject;
@@ -269,7 +269,7 @@ handleClick = () => {
       <>hudhudd
       </>
     )
-    // if (window.localStorage.getItem('name') == 'repoter'){
+    // if (window.localStorage.getItem('name') == 'Admin'){
     //   return (
     //     <Link to="/add">   <div className="addbutton" ><AiOutlineFileAdd/></div></Link> 
     //   )
@@ -295,7 +295,7 @@ handleClick = () => {
           <div className="row"> 
             <div className="col-xl-12">
               {/* {issues.map(issue => {
-                if (issue.assign == "repoter" ){
+                if (issue.assign == "Admin" ){
                 return( <div>
                
 
@@ -370,7 +370,7 @@ handleClick = () => {
        </tr>
 
      )}
-   else if (user=='repoter') 
+   else if (user=='Admin') 
       if (issue.source == "Mobile app") return (
         <tr href="/issue-details" >
     <td>{issue.name }</td>
@@ -385,7 +385,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -409,7 +409,7 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forRepoter(issue)}>
+          onClick={(e)=>this.forAdmin(issue)}>
             <GrView></GrView> </a>
          </li>
 
@@ -498,7 +498,7 @@ handleClick = () => {
        </tr>
 
      )}
-   else if (user=='repoter') 
+   else if (user=='Admin') 
       if (issue.source == "Mobile app") return (
         <tr href="/issue-details" >
     <td>{issue.name }</td>
@@ -513,7 +513,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -537,7 +537,7 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forRepoter(issue)}>
+          onClick={(e)=>this.forAdmin(issue)}>
             <GrView></GrView> </a>
          </li>
 
@@ -625,7 +625,7 @@ handleClick = () => {
        </tr>
 
      )}
-   else if (user=='repoter') 
+   else if (user=='Admin') 
       if (issue.source == "Mobile app") return (
         <tr href="/issue-details" >
     <td>{issue.name }</td>
@@ -640,7 +640,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -664,7 +664,7 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forRepoter(issue)}>
+          onClick={(e)=>this.forAdmin(issue)}>
             <GrView></GrView> </a>
          </li>
 
@@ -753,7 +753,7 @@ handleClick = () => {
        </tr>
 
      )}
-   else if (user=='repoter') 
+   else if (user=='Admin') 
       if (issue.source == "Mobile app") return (
         <tr href="/issue-details" >
     <td>{issue.name }</td>
@@ -768,7 +768,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -792,7 +792,7 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forRepoter(issue)}>
+          onClick={(e)=>this.forAdmin(issue)}>
             <GrView></GrView> </a>
          </li>
 

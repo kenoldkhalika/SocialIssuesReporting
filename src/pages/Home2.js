@@ -77,7 +77,7 @@ ref.orderByChild("assign").equalTo("K.Khalika").on("child_added", (snap) => {
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var rp = 0;
-ref.orderByChild("assign").equalTo("reporter").on("child_added", (snap) => {
+ref.orderByChild("assign").equalTo("Admini").on("child_added", (snap) => {
   rp = rp+1;
 });
  window.localStorage.setItem('RP', rp);
@@ -285,7 +285,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
   const assignData = [
     {name: 'J.Msosa', value: window.localStorage.getItem("JM"),},
     { name: 'K.Khalika', value: window.localStorage.getItem("KH"),},
-    {name: 'Mike', value:window.localStorage.getItem("RP"), },  
+    {name: 'Admin', value:window.localStorage.getItem("RP"), },  
   ];
 
   const priorityData = [
@@ -293,7 +293,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
     { name: 'Medium', Issues: parseInt(window.localStorage.getItem("ME")),},
     {name: 'High', Issues: parseInt(window.localStorage.getItem("HI")),},  
   ];
-  if (window.localStorage.getItem('name') === 'repoter'){
+  if (window.localStorage.getItem('name') === 'Admin'){
     return (
       <div > 
       <div className='row'>

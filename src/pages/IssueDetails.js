@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 // import Form from './Form';
 import {toast} from "react-toastify";
 // import { Card } from "reactstrap";
-import Repoter from "../Users/Repoter";
+import Repoter  from '../Users/Repoter'
 import { Container, Button, Modal, Row, Col, FormGroup, Form, FormLabel, FormControl, Card } from "react-bootstrap";
 import Toggle from "./Toggle";
 
@@ -123,7 +123,7 @@ nav = () =>{
       
    {issues.map(issue => {
      if (issue.uid == window.localStorage.getItem('data') && 
-     window.localStorage.getItem('name') !== 'repoter')
+     window.localStorage.getItem('name') !== 'Admin')
      return(
         <div>
           <div className="row">
@@ -181,7 +181,7 @@ nav = () =>{
 
      )
     //  else if (issue.uid == window.localStorage.getItem('data') && issue.state1 == 'resolved'
-    //  && window.localStorage.getItem('name') !== 'repoter')
+    //  && window.localStorage.getItem('name') !== 'Adimin')
     //   return(
     //     <div>
     //       <div className="row">
@@ -198,7 +198,7 @@ nav = () =>{
             
     //           Email: {issue.email} | Contact: {issue.contact} | Location: {issue.location}<br />
     //           <h5>priority: {issue.priority}</h5> 
-    //           {issue.repoterMessage} | Remark: {issue.message} {window.localStorage.getItem('reso')} {window.localStorage.getItem('data')}
+    //           {issue.AdiminMessage} | Remark: {issue.message} {window.localStorage.getItem('reso')} {window.localStorage.getItem('data')}
     //           <br />
     //         </Card.Body>
     //         <Card.Footer className="text-muted">This issue was reported on : {issue.openDate} | resolved : {issue.resolvedDate}</Card.Footer>
@@ -210,7 +210,7 @@ nav = () =>{
     //     </div>
     //   )
      else if (issue.uid == window.localStorage.getItem('data') && 
-     window.localStorage.getItem('name') == 'repoter')
+     window.localStorage.getItem('name') == 'Admin')
      
       return (
        <div><Repoter /></div>

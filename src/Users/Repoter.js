@@ -121,7 +121,7 @@ class Repoter extends React.Component{
             <div style={{background:"#f0f0f0"}}> <br /> 
             {issues.map(issue => {
               if (issue.uid == window.localStorage.getItem('data') 
-              && window.localStorage.getItem('name') == 'repoter' && issue.source !== "Mobile app"){
+              && window.localStorage.getItem('name') == 'Admin' && issue.source !== "Mobile app"){
                 return (
                   <div >
                   <div className="row">
@@ -151,7 +151,7 @@ class Repoter extends React.Component{
                 </div>
                 ) }
                 else if (issue.uid == window.localStorage.getItem('data') 
-                && window.localStorage.getItem('name') == 'repoter' && issue.source == "Mobile app"){
+                && window.localStorage.getItem('name') == 'Admin' && issue.source == "Mobile app"){
                   return (
                   
                     <div >  <h1>{issue.id}</h1> 

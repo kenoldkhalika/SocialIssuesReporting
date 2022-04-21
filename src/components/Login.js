@@ -79,7 +79,7 @@ export const LoginForm = ({ formSwitcher }) =>{
             // return alert("successful loged")
 		}
         else if (usrnm2=="mike" & password2=="12345"){
-            window.localStorage.setItem('name', 'repoter');
+            window.localStorage.setItem('name', 'Admin');
             navigate('/home-page');
             // return alert("successful loged")
 		}
