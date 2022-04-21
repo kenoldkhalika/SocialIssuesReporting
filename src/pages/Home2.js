@@ -108,6 +108,93 @@ ref.orderByChild("state1").equalTo("open").on("child_added", (snap) => {
 });
  window.localStorage.setItem('OP', op);
 },[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var opj = 0;
+
+  ref.orderByChild("state1").equalTo("open").on("child_added", (snap) => {
+    if (snap.child('assign').val() === 'J.Msosa'){
+      opj = opj+1;
+      console.log(snap.child('assign').val());
+    }
+    
+  });window.localStorage.setItem('OPJ', opj);
+
+ 
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var rej = 0;
+
+  ref.orderByChild("state1").equalTo("resolved").on("child_added", (snap) => {
+    if (snap.child('assign').val() === 'J.Msosa'){
+      rej = rej+1;
+    }
+    
+  });window.localStorage.setItem('REJ', rej);
+
+ 
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var pej = 0;
+
+  ref.orderByChild("state1").equalTo("pending").on("child_added", (snap) => {
+    if (snap.child('assign').val() === 'J.Msosa'){
+      pej = pej+1;
+    }
+    
+  });window.localStorage.setItem('PEJ', pej);
+
+ 
+},[])
+
+// for khalika
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var opk = 0;
+
+  ref.orderByChild("state1").equalTo("open").on("child_added", (snap) => {
+    if (snap.child('assign').val() === 'K.Khalika'){
+      opk = opk+1;
+      console.log(snap.child('assign').val());
+    }
+    
+  });window.localStorage.setItem('OPK', opk);
+
+ 
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var rek = 0;
+
+  ref.orderByChild("state1").equalTo("resolved").on("child_added", (snap) => {
+    if (snap.child('assign').val() === 'K.Khalika'){
+      rek = rek+1;
+    }
+    
+  });window.localStorage.setItem('REK', rek);
+
+ 
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var pek = 0;
+
+  ref.orderByChild("state1").equalTo("pending").on("child_added", (snap) => {
+    if (snap.child('assign').val() === 'K.Khalika'){
+      pek = pek+1;
+    }
+    
+  });window.localStorage.setItem('PEK', pek);
+
+ 
+},[])
   
 //for priority
 useEffect(()=>{
@@ -183,6 +270,18 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
     {name: 'Resolved', value: window.localStorage.getItem("RE"),},  
   ];
 
+  const dataJ = [
+    {name: 'Pending issues', value: window.localStorage.getItem("PEJ"), },
+    { name: 'Open issues', value: window.localStorage.getItem("OPJ"),},
+    {name: 'Resolved', value: window.localStorage.getItem("REJ"),},  
+  ];
+
+  const dataK = [
+    {name: 'Pending issues', value: window.localStorage.getItem("PEK"), },
+    { name: 'Open issues', value: window.localStorage.getItem("OPK"),},
+    {name: 'Resolved', value: window.localStorage.getItem("REK"),},  
+  ];
+
   const assignData = [
     {name: 'J.Msosa', value: window.localStorage.getItem("JM"),},
     { name: 'K.Khalika', value: window.localStorage.getItem("KH"),},
@@ -194,7 +293,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
     { name: 'Medium', Issues: parseInt(window.localStorage.getItem("ME")),},
     {name: 'High', Issues: parseInt(window.localStorage.getItem("HI")),},  
   ];
-  
+  if (window.localStorage.getItem('name') === 'repoter'){
     return (
       <div > 
       <div className='row'>
@@ -213,7 +312,9 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
         barSize={20}
       >
         <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-        <YAxis />
+        <YAxis 
+         allowDecimals={false}
+        />
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
@@ -237,7 +338,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis type="number" />
-          <YAxis dataKey="name" type="category" scale="band" />
+          <YAxis dataKey="name" type="category" scale="band" allowDecimals={false}/>
           <Tooltip />
           <Legend />
           {/* <Area dataKey="amt" fill="#8884d8" stroke="#8884d8" /> */}
@@ -265,7 +366,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
             barSize={20}
           >
             <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-            <YAxis />
+            <YAxis allowDecimals={false}/>
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="3 3" />
@@ -290,6 +391,61 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
         </PieChart>
       </ResponsiveContainer></div></div>
         </div>
+    );}
+    else if (window.localStorage.getItem('name') === 'J.Msosa') {
+      return(
+         
+          <div className='col-10'> 
+           <><h4 style={{paddingTop:"5px"}}>ISSUE STATUS</h4></> 
+             <ResponsiveContainer width="100%" aspect={3}>
+      <BarChart
+        width={500}
+        height={300}
+        data={dataJ}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barSize={20}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+        <YAxis allowDecimals={false}/>
+        <Tooltip />
+        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+      </BarChart>
+    </ResponsiveContainer> </div>
+      );
+    }
+    else 
+    return(
+      <>
+
+      <div className='col-10'>   <><h4 style={{paddingTop:"5px"}}>ISSUE STATUS</h4></>
+      <ResponsiveContainer width="100%" aspect={3}>
+      <BarChart
+        width={500}
+        height={300}
+        data={dataK}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barSize={20}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+        <YAxis allowDecimals={false} />
+        <Tooltip />
+        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+      </BarChart>
+    </ResponsiveContainer> </div></>
     );
     
 };

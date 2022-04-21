@@ -304,12 +304,12 @@ handleClick = () => {
    <tr>
    {/* <th >#</th> */}
     <th >NAME</th>
-     <th>CONTACT</th>
      <th>SUBJECT</th>
      <th>LOCATION</th>
     <th>DATE</th>
     <th>STATUS</th>
     <th>ASSIGN</th>
+    <th>PRIORITY</th>
     <th>ACTIONS</th>
    </tr>
    <tbody>
@@ -322,13 +322,13 @@ handleClick = () => {
        <tr>
          {/* <td>60</td> */}
          <td>{issue.name }</td>
-         <td>{issue.contact}</td>
          <td>{issue.subject}</td>
          <td>{issue.location}</td>
 
          <td>{issue.date}</td>
          <td>{issue.state1}</td>
          <td>{issue.assign}</td>
+         <td>{issue.priority}</td>
          <td> 
             <ul class="list-inline m-0">
               <li class="list-inline-item">  
@@ -371,13 +371,14 @@ handleClick = () => {
       if (issue.source == "Mobile app") return (
         <tr href="/issue-details" >
     <td>{issue.name }</td>
-    <td>{issue.contact}</td>
+
     <td>{issue.subject}</td>
     <td>{issue.location}</td>
 
     <td>{issue.date}</td>
     <td>{issue.state1}</td>
     <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
@@ -394,13 +395,13 @@ handleClick = () => {
      
     <tr href="/issue-details" >
     <td>{issue.name }</td>
-    <td>{issue.contact}</td>
     <td>{issue.subject}</td>
     <td>{issue.location}</td>
 
     <td>{issue.date}</td>
     <td>{issue.state1}</td>
     <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
@@ -436,6 +437,9 @@ handleClick = () => {
    
   
   }
+               
+
+               
                
       </tbody>
       </table>
