@@ -46,7 +46,7 @@ handleSubmit = event => {
   let date = this.refs.date.value;
   let issueDescription = this.refs.issueDescription.value;
   let subject = this.refs.subject.value;
-  let priority = "low";
+  let priority = this.refs.priority.value;
   let source = "Web app";
   let state1 = "pending"
   let assign = this.refs.assign.value;
@@ -68,7 +68,8 @@ handleSubmit = event => {
      issues[devIndex].location = location;
     issues[devIndex].date = date;
      issues[devIndex].issueDescription = issueDescription;
-     issues[devIndex].assign = assign;
+    issues[devIndex].assign = assign;
+    issues[devIndex].priority = priority;
     this.setState({ issues });
   
 
@@ -914,7 +915,7 @@ handleClick = () => {
            <Form.Group as={Row} className="mb-3" controlId="formGridState">
                <Form.Label column sm="2">Priority</Form.Label>
                <Col sm="10">
-               <Form.Select defaultValue="Medium">
+               <Form.Select defaultValue="Medium" ref = "priority" >
                  <option>Medium</option>
                  <option>Low</option>
                  <option>High</option>
