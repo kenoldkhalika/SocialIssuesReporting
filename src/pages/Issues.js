@@ -314,8 +314,10 @@ handleClick = () => {
    </tr>
    <tbody>
    {issues.map(issue => {
+     
      const user = window.localStorage.getItem('name');
      const number = 0;
+     if (issue.priority == ""){
      if (issue.assign == user ){
      return(
       //  <div>
@@ -432,14 +434,394 @@ handleClick = () => {
        </td>
    
   
-  </tr>)
+  </tr>)}
    }) 
    
   
   }
                
 
+               {issues.map(issue => {
+     
+     const user = window.localStorage.getItem('name');
+     const number = 0;
+     if (issue.priority == "High"){
+     if (issue.assign == user ){
+     return(
+      //  <div>
+       <tr>
+         {/* <td>60</td> */}
+         <td>{issue.name }</td>
+         <td>{issue.subject}</td>
+         <td>{issue.location}</td>
+
+         <td>{issue.date}</td>
+         <td>{issue.state1}</td>
+         <td>{issue.assign}</td>
+         <td>{issue.priority}</td>
+         <td> 
+            <ul class="list-inline m-0">
+              <li class="list-inline-item">  
+              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+
+              {/* <Link to="/issue-details" >
+                <div  
+                 
+              onClick={(e)=>this.changeIssueState(issue)}  
+                // onClick={(e)=>{this.handleShowModal(issue.contact); }}
+                title="View"><i class="fa fa-table"></i><GrView></GrView></div> </Link> */}
+              </li>
+{/* 
+              <li class="list-inline-item"> 
+                <Link to="#" >  
+                <div 
+                onClick={(e)=> this.updateData(issue)} 
+               data-toggle="tooltip" 
+                 data-placement="top" title="Edit">
+                <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
+              </li> */}
+              {/* <li class="list-inline-item">
+              <div onClick={(e)=>this.removeData(issue)} 
                
+             data-toggle="tooltip" 
+              value={issue.name}
+              data-placement="top" title="Delete"><i 
+              class="fa fa-trash"></i><MdOutlineDelete /></div>
+              </li> */}
+              </ul>
+                    
+                    
+            </td>
+        
+       
+       </tr>
+
+     )}
+   else if (user=='repoter') 
+      if (issue.source == "Mobile app") return (
+        <tr href="/issue-details" >
+    <td>{issue.name }</td>
+
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         </li>
+         </ul>        
+       </td>
+   
+  
+  </tr>
+
+      )
+      else  return(
+     
+    <tr href="/issue-details" >
+    <td>{issue.name }</td>
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table"
+          onClick={(e)=>this.forRepoter(issue)}>
+            <GrView></GrView> </a>
+         </li>
+
+         <li class="list-inline-item"> 
+           <Link to="#" >  
+           <div 
+           onClick={(e)=> this.updateData(issue)} 
+          data-toggle="tooltip" 
+            data-placement="top" title="Edit">
+           <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
+         </li>
+         <li class="list-inline-item">
+         <div onClick={(e)=>this.removeData(issue)} 
+          
+        data-toggle="tooltip" 
+         value={issue.name}
+         data-placement="top" title="Delete"><i 
+         class="fa fa-trash"></i><MdOutlineDelete /></div>
+         </li>
+         </ul>
+               
+               
+       </td>
+   
+  
+  </tr>)}
+   }) 
+   
+  
+  }   
+
+   {issues.map(issue => {
+     
+     const user = window.localStorage.getItem('name');
+     const number = 0;
+     if (issue.priority == "Medium"){
+     if (issue.assign == user ){
+     return(
+      //  <div>
+       <tr>
+         {/* <td>60</td> */}
+         <td>{issue.name }</td>
+         <td>{issue.subject}</td>
+         <td>{issue.location}</td>
+
+         <td>{issue.date}</td>
+         <td>{issue.state1}</td>
+         <td>{issue.assign}</td>
+         <td>{issue.priority}</td>
+         <td> 
+            <ul class="list-inline m-0">
+              <li class="list-inline-item">  
+              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+
+              {/* <Link to="/issue-details" >
+                <div  
+                 
+              onClick={(e)=>this.changeIssueState(issue)}  
+                // onClick={(e)=>{this.handleShowModal(issue.contact); }}
+                title="View"><i class="fa fa-table"></i><GrView></GrView></div> </Link> */}
+              </li>
+{/* 
+              <li class="list-inline-item"> 
+                <Link to="#" >  
+                <div 
+                onClick={(e)=> this.updateData(issue)} 
+               data-toggle="tooltip" 
+                 data-placement="top" title="Edit">
+                <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
+              </li> */}
+              {/* <li class="list-inline-item">
+              <div onClick={(e)=>this.removeData(issue)} 
+               
+             data-toggle="tooltip" 
+              value={issue.name}
+              data-placement="top" title="Delete"><i 
+              class="fa fa-trash"></i><MdOutlineDelete /></div>
+              </li> */}
+              </ul>
+                    
+                    
+            </td>
+        
+       
+       </tr>
+
+     )}
+   else if (user=='repoter') 
+      if (issue.source == "Mobile app") return (
+        <tr href="/issue-details" >
+    <td>{issue.name }</td>
+
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         </li>
+         </ul>        
+       </td>
+   
+  
+  </tr>
+
+      )
+      else  return(
+     
+    <tr href="/issue-details" >
+    <td>{issue.name }</td>
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table"
+          onClick={(e)=>this.forRepoter(issue)}>
+            <GrView></GrView> </a>
+         </li>
+
+         <li class="list-inline-item"> 
+           <Link to="#" >  
+           <div 
+           onClick={(e)=> this.updateData(issue)} 
+          data-toggle="tooltip" 
+            data-placement="top" title="Edit">
+           <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
+         </li>
+         <li class="list-inline-item">
+         <div onClick={(e)=>this.removeData(issue)} 
+          
+        data-toggle="tooltip" 
+         value={issue.name}
+         data-placement="top" title="Delete"><i 
+         class="fa fa-trash"></i><MdOutlineDelete /></div>
+         </li>
+         </ul>
+               
+               
+       </td>
+   
+  
+  </tr>)}
+   }) 
+   
+  
+  }   
+
+
+  {issues.map(issue => {
+     
+     const user = window.localStorage.getItem('name');
+     const number = 0;
+     if (issue.priority == "Low"){
+     if (issue.assign == user ){
+     return(
+      //  <div>
+       <tr>
+         {/* <td>60</td> */}
+         <td>{issue.name }</td>
+         <td>{issue.subject}</td>
+         <td>{issue.location}</td>
+
+         <td>{issue.date}</td>
+         <td>{issue.state1}</td>
+         <td>{issue.assign}</td>
+         <td>{issue.priority}</td>
+         <td> 
+            <ul class="list-inline m-0">
+              <li class="list-inline-item">  
+              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+
+              {/* <Link to="/issue-details" >
+                <div  
+                 
+              onClick={(e)=>this.changeIssueState(issue)}  
+                // onClick={(e)=>{this.handleShowModal(issue.contact); }}
+                title="View"><i class="fa fa-table"></i><GrView></GrView></div> </Link> */}
+              </li>
+{/* 
+              <li class="list-inline-item"> 
+                <Link to="#" >  
+                <div 
+                onClick={(e)=> this.updateData(issue)} 
+               data-toggle="tooltip" 
+                 data-placement="top" title="Edit">
+                <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
+              </li> */}
+              {/* <li class="list-inline-item">
+              <div onClick={(e)=>this.removeData(issue)} 
+               
+             data-toggle="tooltip" 
+              value={issue.name}
+              data-placement="top" title="Delete"><i 
+              class="fa fa-trash"></i><MdOutlineDelete /></div>
+              </li> */}
+              </ul>
+                    
+                    
+            </td>
+        
+       
+       </tr>
+
+     )}
+   else if (user=='repoter') 
+      if (issue.source == "Mobile app") return (
+        <tr href="/issue-details" >
+    <td>{issue.name }</td>
+
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forRepoter(issue)}><GrView></GrView> </a>
+         </li>
+         </ul>        
+       </td>
+   
+  
+  </tr>
+
+      )
+      else  return(
+     
+    <tr href="/issue-details" >
+    <td>{issue.name }</td>
+    <td>{issue.subject}</td>
+    <td>{issue.location}</td>
+
+    <td>{issue.date}</td>
+    <td>{issue.state1}</td>
+    <td>{issue.assign}</td>
+    <td>{issue.priority}</td>
+    <td> 
+       <ul class="list-inline m-0">
+         <li class="list-inline-item">  
+         <a href="/issue-details" class="fa fa-table"
+          onClick={(e)=>this.forRepoter(issue)}>
+            <GrView></GrView> </a>
+         </li>
+
+         <li class="list-inline-item"> 
+           <Link to="#" >  
+           <div 
+           onClick={(e)=> this.updateData(issue)} 
+          data-toggle="tooltip" 
+            data-placement="top" title="Edit">
+           <i class="fa fa-edit"> </i><AiOutlineEdit></AiOutlineEdit></div></Link>
+         </li>
+         <li class="list-inline-item">
+         <div onClick={(e)=>this.removeData(issue)} 
+          
+        data-toggle="tooltip" 
+         value={issue.name}
+         data-placement="top" title="Delete"><i 
+         class="fa fa-trash"></i><MdOutlineDelete /></div>
+         </li>
+         </ul>
+               
+               
+       </td>
+   
+  
+  </tr>)}
+   }) 
+   
+  
+  }               
                
       </tbody>
       </table>
