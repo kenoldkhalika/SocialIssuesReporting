@@ -4,7 +4,7 @@ import { AiOutlineEdit,AiOutlineFileAdd } from "react-icons/ai";
 class AddOption extends React.Component{
     render (){
 
-     if (window.localStorage.getItem('name') == 'repoter'){
+     if (window.localStorage.getItem('name') == 'Admin'){
       return (
             <Link to="/add">   <div className="addbutton" ><AiOutlineFileAdd/></div></Link> 
         )
