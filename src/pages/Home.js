@@ -47,7 +47,7 @@ export default Home;
 
 // const Home =()=>{
 //     return (
-//       <div className="row"  style={{ height: "100vh",
+//       <div  style={{ height: "100vh",
 //       width: "100%",
 //       backgroundImage:`url(${background1})` ,
 //       // opacity:"0.5",
@@ -59,9 +59,9 @@ export default Home;
 //       boxSizing: "border-box",
 //       margin:"auto",
 //       position: "relative"}}> 
-//       <div className="col-3"></div>
+//       <div></div>
 
-//       <div className="col-7">
+//       <div >
 //       <div 
      
       
@@ -131,17 +131,17 @@ export default Home;
 //          }}
              
              
-//              class="btn3">Start Now</button></Link>
+//              class="btn3">LOG IN</button></Link>
 
 //             </div>
-//             <Default>hbhbhb</Default>
+//             {/* <Default>hbhbhb</Default> */}
 //        </div>
       
 //        </div>
 //       </div>
       
       
-//       <div className="col-2"></div>
+//       <div ></div>
 //       </div>
      
  

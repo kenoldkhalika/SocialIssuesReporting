@@ -1,6 +1,6 @@
 import React from 'react'
 import fireDb from "firebase";
-
+import Header from '../components/Header';
 import About from '../pages/About';
 import { Container, Button, Modal, Row, Col, FormGroup, Form, FormLabel, FormControl, Card } from "react-bootstrap";
 
@@ -117,7 +117,7 @@ class Repoter extends React.Component{
         const { issues} = this.state;
 
         return (
-          
+            <>
             <div style={{background:"#f0f0f0"}}> <br /> 
             {issues.map(issue => {
               if (issue.uid == window.localStorage.getItem('data') 
@@ -218,7 +218,7 @@ class Repoter extends React.Component{
                 
                })} 
          
-            </div>
+            </div> </>
         );
     }
  

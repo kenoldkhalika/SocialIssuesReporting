@@ -3,8 +3,10 @@ import fireDb from "firebase";
 import Issues from './Issues'; 
 import Visualization from './Visualization';
 // import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,
+import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,  LineChart,
   Area,YAxis, CartesianGrid, Tooltip, Pie, PieChart, Legend, ResponsiveContainer } from 'recharts';
+import Header from "../components/Header";
+
 
 
 
@@ -108,6 +110,74 @@ ref.orderByChild("state1").equalTo("open").on("child_added", (snap) => {
 });
  window.localStorage.setItem('OP', op);
 },[])
+
+// for analytics
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var january = 0;
+ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
+  var myString = snap.child("openDate").val();
+  var array = new Array();
+  array = myString.split('/');
+  // console.log(array[0]);
+  if (array[0] == "01" || array[0] == "1"){
+    january = january+1;
+  }
+  
+});
+// console.log(january);
+ window.localStorage.setItem('JANUARY', january);
+},[])
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var april = 0;
+ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
+  var myString = snap.child("openDate").val();
+  var array = new Array();
+  array = myString.split('/');
+  // console.log(array[0]);
+  if (array[0] == "04" || array[0] == "4"){
+    april = april+1;
+  }
+  
+});
+ window.localStorage.setItem('APRIL', april);
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var februar = 0;
+ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
+  var myString = snap.child("openDate").val();
+  var array = new Array();
+  array = myString.split('/');
+  // console.log(array[0]);
+  if (array[0] == "02" || array[0] == "2"){
+    februar = februar+1;
+  }
+
+});
+ window.localStorage.setItem('FEBRUARY', februar);
+ console.log(februar);
+},[])
+
+useEffect(()=>{
+  let ref = fireDb.database().ref("issues");
+  var mar = 0;
+ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
+  var myString = snap.child("openDate").val();
+  var array = new Array();
+  array = myString.split('/');
+  // console.log(array[0]);
+  if (array[0] == "03" || array[0] == "3"){
+    mar = mar+1;
+  }
+
+});
+ window.localStorage.setItem('MARCH', mar);
+ console.log(mar);
+},[])
+
 
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
@@ -223,9 +293,10 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
 });
  window.localStorage.setItem('HI', hi);
 },[])
+
   const getUserData = () => {
     let ref = fireDb.database().ref("/");
-    ref.on("value", snapshot => {
+    ref.on("issues", snapshot => {
       const state = snapshot.val();
       return state;
     });
@@ -241,58 +312,65 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
   const data = [
     {
       name: 'Child Marriages',
-      value: window.localStorage.getItem("ChildMarieges"),
+      issues: window.localStorage.getItem("ChildMarieges"),
       uv:654,
  
     },
     {
       name: 'Gender based violence',
-      value:window.localStorage.getItem("gender"),
+      issues:window.localStorage.getItem("gender"),
       uv:654,
  
     },
     {
       name: 'Child abuse',
-      value: window.localStorage.getItem("ChildAbuse"),
+      issues: window.localStorage.getItem("ChildAbuse"),
       uv: 435,
     },
     {
       name: 'Child labor',
-      value: window.localStorage.getItem("ChildLabor"),
+      issues: window.localStorage.getItem("ChildLabor"),
       uv: 774,
     },
     
   ];
 
   const dataPrio = [
-    { name: 'Low', value: parseInt(window.localStorage.getItem("LO")) },
-    { name: 'Medium', value: parseInt(window.localStorage.getItem("ME"))},
-    { name: 'High', value: parseInt(window.localStorage.getItem("HI")) },
+    { name: 'Low', issues: parseInt(window.localStorage.getItem("LO")) },
+    { name: 'Medium', issues: parseInt(window.localStorage.getItem("ME"))},
+    { name: 'High', issues: parseInt(window.localStorage.getItem("HI")) },
     
   ];
 
   const data1 = [
-    {name: 'Pending issues', value: window.localStorage.getItem("PE"), },
-    { name: 'Open issues', value: window.localStorage.getItem("OP"),},
-    {name: 'Resolved', value: window.localStorage.getItem("RE"),},  
+    {name: 'Pending issues', issues: window.localStorage.getItem("PE"), },
+    { name: 'Open issues', issues: window.localStorage.getItem("OP"),},
+    {name: 'Resolved', issues: window.localStorage.getItem("RE"),},  
   ];
 
   const dataJ = [
-    {name: 'Pending issues', value: window.localStorage.getItem("PEJ"), },
-    { name: 'Open issues', value: window.localStorage.getItem("OPJ"),},
-    {name: 'Resolved', value: window.localStorage.getItem("REJ"),},  
+    {name: 'Pending issues', issues: window.localStorage.getItem("PEJ"), },
+    { name: 'Open issues', issues: window.localStorage.getItem("OPJ"),},
+    {name: 'Resolved', issues: window.localStorage.getItem("REJ"),},  
+  ];
+
+  const dataAnalytics = [
+    { name: 'January', Issues: window.localStorage.getItem("JANUARY"),},
+    { name: 'February', Issues: window.localStorage.getItem("FEBRUARY"),},
+    { name: 'March', Issues: window.localStorage.getItem("MARCH"), },
+    { name: 'April',Issues: window.localStorage.getItem("APRIL"),},
   ];
 
   const dataK = [
-    {name: 'Pending issues', value: window.localStorage.getItem("PEK"), },
-    { name: 'Open issues', value: window.localStorage.getItem("OPK"),},
-    {name: 'Resolved', value: window.localStorage.getItem("REK"),},  
+    {name: 'Pending issues', issues: window.localStorage.getItem("PEK"), },
+    { name: 'Open issues', issues: window.localStorage.getItem("OPK"),},
+    {name: 'Resolved', issues: window.localStorage.getItem("REK"),},  
   ];
 
   const assignData = [
-    {name: 'J.Msosa', value: window.localStorage.getItem("JM"),},
-    { name: 'K.Khalika', value: window.localStorage.getItem("KH"),},
-    {name: 'Admin', value:window.localStorage.getItem("RP"), },  
+    {name: 'J.Msosa', issues: window.localStorage.getItem("JM"),},
+    { name: 'K.Khalika', issues: window.localStorage.getItem("KH"),},
+    {name: 'Admin', issues:window.localStorage.getItem("RP"), },  
   ];
 
   const priorityData = [
@@ -302,9 +380,11 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
   ];
   if (window.localStorage.getItem('name') === 'Admin'){
     return (
-      <div > 
+      <><Header/>
+      <div >
+         
       <div className='row'>
-        <div className='col-6'>  <h5>Issue Subjects</h5>
+        <div className='col-6'>  <h5>Issue Category </h5>
       <ResponsiveContainer width="100%" aspect={3}>
       <BarChart
         width={500}
@@ -325,7 +405,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+        <Bar dataKey="issues" fill="#8884d8" background={{ fill: '#eee' }} />
       </BarChart>
     </ResponsiveContainer> </div>
     <div className='col-6'>
@@ -348,7 +428,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+        <Bar dataKey="issues" fill="#8884d8" background={{ fill: '#eee' }} />
       </BarChart>
     </ResponsiveContainer>
        </div>
@@ -375,14 +455,14 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="3 3" />
-            <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+            <Bar dataKey="issues" fill="#8884d8" background={{ fill: '#eee' }} />
           </BarChart>
         </ResponsiveContainer> </div>
-        <div className='col-6'> <h5></h5>
-        <ResponsiveContainer width="100%" aspect={3}>
+        <div className='col-6'>  <h5>Reported Issues per month </h5>
+        {/* <ResponsiveContainer width="100%" aspect={3}>
         <PieChart width={400} height={400}>
           <Pie
-            dataKey="value"
+            dataKey="issues"
             startAngle={180}
             endAngle={0}
             data={dataPrio}
@@ -394,12 +474,36 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
           />
           <Tooltip />
         </PieChart>
-      </ResponsiveContainer></div></div>
-        </div>
+      </ResponsiveContainer> */}
+
+<ResponsiveContainer width="100%" height={200}>
+          <LineChart
+            width={500}
+            height={200}
+            data={dataAnalytics}
+            syncId="anyId"
+            margin={{
+              top: 10,
+              right: 30,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="Issues" stroke="#8884d8" fill="#8884d8" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      </div>
+        </div></>
     );}
     else if (window.localStorage.getItem('name') === 'J.Msosa') {
       return(
-         
+        <><Header/>
           <div className='col-10'> 
            <><h4 style={{paddingTop:"5px"}}>ISSUE STATUS</h4></> 
              <ResponsiveContainer width="100%" aspect={3}>
@@ -420,15 +524,15 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+        <Bar dataKey="issues" fill="#8884d8" background={{ fill: '#eee' }} />
       </BarChart>
-    </ResponsiveContainer> </div>
+    </ResponsiveContainer> </div></>
       );
     }
     else 
     return(
       <>
-
+      <Header/>
       <div className='col-10'>   <><h4 style={{paddingTop:"5px"}}>ISSUE STATUS</h4></>
       <ResponsiveContainer width="100%" aspect={3}>
       <BarChart
@@ -448,9 +552,10 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+        <Bar dataKey="issues" fill="#8884d8" background={{ fill: '#eee' }} />
       </BarChart>
-    </ResponsiveContainer> </div></>
+    </ResponsiveContainer> </div>
+   </> 
     );
     
 };

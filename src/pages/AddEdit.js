@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import './AddEdit.css';
 import fireDb from "../firebase";
 import {toast} from "react-toastify"
-
+import Header from "../components/Header";
 import 'react-toastify/dist/ReactToastify.css';
 import Form from './Form';
 import IssueForm from './Form';
@@ -84,11 +84,12 @@ const AddEdit =()=>{
 
 
     return (
+      <><Header/>
         <div style={{background:"#f0f0f0"}}>
             {/* <Form /> */}
             {/* <Form></Form> */}
             <IssueForm></IssueForm>
-        </div>
+        </div></>
     );
 };
 export default AddEdit;

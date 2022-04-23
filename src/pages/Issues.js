@@ -18,6 +18,7 @@ import Header from "../components/Header";
 import AddOption from "./AddOption";
 
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -87,6 +88,7 @@ handleSubmit = event => {
   componentDidMount() {
     this.getUserData();
     this.handleClick();
+    this.clickButton();
     // this.changeNumberDays11();
     // document.getElementById("button").click();
     // this.getUserData1();
@@ -97,7 +99,17 @@ handleSubmit = event => {
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
       this.writeUserData();
+      
+    // document.getElementById("button").click();
+
+
     }
+    // this.changePriority();
+  }
+
+  componentWillUpdate(){
+    // document.getElementById("button").click();
+
   }
 
   writeUserData = () => {
@@ -129,15 +141,38 @@ console.log("Total number of days between dates <br>"
 // console.log("Justine");
 }
 
+clickButton = () => {
+ 
+  if (window.localStorage.getItem("hidebutton") =="yes"){
+    $('#button').slideUp().delay(5000000).fadeOut(5000000);
+    document.getElementById('button').style.visibility = 'hidden';
+  }
+}
+
 changePriority = () =>{
   const { issues } = this.state;
-  
+  window.localStorage.setItem("hidebutton", "yes");
   issues.map(issue => {
       if (parseInt(issue.numberDays) >= 5){
 
-              
+
       const changePriority1 = issue => {
-        let issueId = issue.uid;
+        if (issue.priority == "Low"){
+          let issueId = issue.uid;
+        let issuePriority = "Medium";
+  
+        console.log(issue.uid);
+        const { issues } = this.state;
+        const devIndex = issues.findIndex(data => {
+            return data.uid === issueId;
+          });
+         
+          issues[devIndex].priority = issuePriority;
+          return this.setState({ issues });
+
+        } 
+        else{
+          let issueId = issue.uid;
         let issuePriority = "High";
   
         console.log(issue.uid);
@@ -148,15 +183,15 @@ changePriority = () =>{
          
           issues[devIndex].priority = issuePriority;
           return this.setState({ issues });
-    
-    
+          
+        } 
     
         };
         changePriority1(issue)
       }
 
 
-  })
+  });
   // $("#button").hide();
   $('#button').slideUp().delay(5000).fadeOut(5000000);
 }
@@ -401,7 +436,7 @@ handleClick = () => {
      
       <React.Fragment>
        
-        
+       <Header/>
         <div className="container">
           <div className="row">
             

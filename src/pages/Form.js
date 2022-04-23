@@ -4,6 +4,7 @@ import IssueDetails from './IssueDetails'
 import {toast} from "react-toastify";
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "../components/Header";
 import { Container, Row, Col, Form, FormGroup, FormLabel, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
 

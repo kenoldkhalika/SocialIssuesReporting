@@ -52,7 +52,7 @@ useEffect(()=> {
          </div>
         </p> */}
 
-       <Link to="issues">
+       <Link to="/issues">
        
        <p className={`${activeTab==="Issues" ? "active" : ""}`}
         onClick={()=> setActiveTab("Issues")}> Issues </p>

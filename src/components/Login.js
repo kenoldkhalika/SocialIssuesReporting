@@ -1,4 +1,4 @@
-import React,  {useState} from "react";
+import React,  {useState, useEffect} from "react";
 import {Button} from "react-bootstrap";
 import Logo from './layout/Logo.png';
 import { Card } from "reactstrap";
@@ -22,6 +22,7 @@ import {
 
 
 export const LoginForm = ({ formSwitcher }) =>{
+
     const dbRef = fireDb.database().ref("/").child("users");
     dbRef.on("value", snap => {
         console.log(snap); // this key will output users
@@ -37,6 +38,7 @@ export const LoginForm = ({ formSwitcher }) =>{
     const handleUser = e =>{
         window.localStorage.setItem('name', 'Obaseki Nosa');
     }
+    
 
     const handleOnChange = e => {
 		const { name, value } = e.target;
@@ -88,6 +90,11 @@ export const LoginForm = ({ formSwitcher }) =>{
             return alert("incorrect password")
         }
 	};
+
+    useEffect(()=>{
+        console.log("use effect watheka");
+        window.localStorage.setItem("hidebutton", "no");
+      },[])
     
     return (
     

@@ -15,6 +15,7 @@ function About(){
    
     <div>
        {/* <Header/> */}
+       <Header/>
      <section className="about">
        <div className="main">
        <img src={background1}/>

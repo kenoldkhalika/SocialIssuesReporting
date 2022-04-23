@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import './AddEdit.css';
 import fireDb from "../firebase";
 import {toast} from "react-toastify"
-
+import Header from "../components/Header";
 import 'react-toastify/dist/ReactToastify.css';
   
 
@@ -81,6 +81,7 @@ const AddEdit =()=>{
 
 
     return (
+      <><Header/>
         <div style={{marginTop: "50px"}}>
         <form style={{margin: "auto",
          padding:"15px", 
@@ -134,7 +135,7 @@ const AddEdit =()=>{
         </form>
         {/* <button className="send" onClick={handleSubmit}>Save</button> */}
        
-        </div>
+        </div></>
     );
 };
 export default AddEdit;

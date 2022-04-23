@@ -2,6 +2,8 @@ import React from 'react'
 // import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, ComposedChart, Line,
   Area,YAxis, CartesianGrid, Tooltip, Pie, PieChart, Legend, ResponsiveContainer } from 'recharts';
+import Header from "../components/Header";
+
 
 
 
@@ -29,7 +31,7 @@ const Charts =()=>{
   
   
     return (
-
+      <><Header/>
       <div >
         <h2>{window.localStorage.getItem('name')}</h2>
       <div className='row'> 
@@ -122,7 +124,7 @@ const Charts =()=>{
           <Tooltip />
         </PieChart>
       </ResponsiveContainer></div></div>
-        </div>
+        </div></>
     );
     
 };

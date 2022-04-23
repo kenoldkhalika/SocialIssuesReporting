@@ -9,6 +9,8 @@ import {toast} from "react-toastify";
 import Repoter  from '../Users/Repoter'
 import { Container, Button, Modal, Row, Col, FormGroup, Form, FormLabel, FormControl, Card } from "react-bootstrap";
 import Toggle from "./Toggle";
+import Header from "../components/Header";
+
 
 
 // import { Form } from "./Form";
@@ -105,6 +107,7 @@ nav = () =>{
     const { issues} = this.state;
     return (
       <React.Fragment >
+        <Header/>
         <div  className="container">
           <div className="row">
         
