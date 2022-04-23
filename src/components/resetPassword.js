@@ -51,7 +51,7 @@ export const ResetPassword= ({formSwitcher}) =>{
           <hr />
           <Row>
               <Col>
-                <a href="#" onClick={()=> formSwitcher("login")}>  Login now?</a>
+                <a href="#" style={{color:"black"}} onClick={()=> formSwitcher("login")}>  Login now?</a>
               </Col>
           </Row>
         </Container>

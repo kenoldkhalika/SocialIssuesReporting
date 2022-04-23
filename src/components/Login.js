@@ -147,7 +147,7 @@ export const LoginForm = ({ formSwitcher }) =>{
           <hr className="line"/>
           <Row>
               <Col>
-                <a href="#" onClick = {()=> formSwitcher("reset")}> Forgot Password?</a>
+                <a href="#" style={{color:"black"}} onClick = {()=> formSwitcher("reset")}> Forgot Password?</a>
               </Col>
           </Row>
         </Container>

@@ -23,7 +23,7 @@ useEffect(()=> {
 },[location]);
 
     return (
-        <div className="header">
+        <div className="header" >
      
 
             
