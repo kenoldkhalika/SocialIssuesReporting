@@ -491,7 +491,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis allowDecimals={false} />
             <Tooltip />
             <Line type="monotone" dataKey="Issues" stroke="#8884d8" fill="#8884d8" />
           </LineChart>
