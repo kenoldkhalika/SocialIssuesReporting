@@ -22,16 +22,27 @@ class IssueForm extends React.Component {
   componentDidMount() {
     this.getUserData();
   }
+ /**
+  * When the user clicks on a button, the function will set the state of the variable 'yourvariable' to
+  * the value of the variable 'uid'.
+  * @param uid - The user id of the user you want to send the message to.
+  */
   sendVariable(uid){
     this.setState({yourvariable: uid});
   }
 
+  /**
+   * If the state has changed, then write the new state to the database.
+   * @param prevProps - The previous props.
+   * @param prevState - The previous state.
+   */
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
       this.writeUserData();
     }
   }
 
+ /* Saving the state of the component to the database. */
   writeUserData = () => {
     fireDb.database()
       .ref("/")
@@ -39,6 +50,7 @@ class IssueForm extends React.Component {
     console.log("DATA SAVED");
   };
 
+/* Getting the data from the database and setting the state of the component. */
   getUserData = () => {
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {
@@ -47,6 +59,7 @@ class IssueForm extends React.Component {
     });
   };
 
+ /* The above code is a function that is called when the user clicks the submit button. */
   handleSubmit = event => {
     event.preventDefault();
     let name = this.refs.name.value;
@@ -125,6 +138,7 @@ class IssueForm extends React.Component {
     this.refs.uid.value = "";
   };
 
+ /* Removing the data from the state. */
   removeData = issue => {
     const { issues } = this.state;
     const newState = issues.filter(data => {
@@ -133,6 +147,7 @@ class IssueForm extends React.Component {
     this.setState({ issues: newState });
   };
 
+  /* Updating the value of the input fields with the data from the database. */
   updateData = issue => {
     this.refs.uid.value = issue.uid;
     this.refs.ta.value = issue.ta;

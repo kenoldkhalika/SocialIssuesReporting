@@ -27,6 +27,7 @@
 
 import firebase from 'firebase';
   
+/* The credentials for the firebase database. */
 const firebaseConfig = {
     // Your Credentials
     apiKey: "AIzaSyCzqvMiVP7sF3FmAiM8wHEDqfeokwYvq5Y",

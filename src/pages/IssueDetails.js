@@ -40,6 +40,7 @@ class IssueDetails extends React.Component {
   }
 
 
+ /* Saving the data to the database. */
   writeUserData = () => {
     fireDb.database()
       .ref("/")
@@ -47,6 +48,7 @@ class IssueDetails extends React.Component {
     console.log("DATA SAVED");
   };
   
+  /* Getting the data from the database. */
   getUserData = () => {
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {

@@ -7,6 +7,9 @@ import { LoginForm } from "./Login";
 import { ResetPassword } from "./resetPassword";
 
 
+/**
+ * A function that sets the state of the form to either login or register.
+ */
 export const Entry = () =>{
     const [frmLoad, setFrmLoad] = useState("login");
     const formSwitcher = frmType =>{

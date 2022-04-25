@@ -5,12 +5,16 @@ import Logo from './layout/Logo.png';
 import { menuItems } from "../pages/menuItems";
 import {BsPersonCircle, BsColumns } from "react-icons/bs";
 import MenuItems from "../pages/MenuItemss";
+import { Nav, NavDropdown } from 'react-bootstrap';
 const Header = () => {
 const [activeTab, setActiveTab] = useState("Home");
 const location =useLocation();
 
 
 
+/* A react hook that is used to perform side effects in function components. It serves the same purpose
+as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified
+into a single API. */
 useEffect(()=> { 
     if(location.pathname==="/"){
         setActiveTab("Home")
@@ -55,7 +59,7 @@ useEffect(()=> {
        <Link to="/issues">
        
        <p className={`${activeTab==="Issues" ? "active" : ""}`}
-        onClick={()=> setActiveTab("Issues")}> Issues </p>
+        onClick={()=> setActiveTab("Issues")} > Issues </p>
        
        </Link>
 
@@ -76,10 +80,21 @@ useEffect(()=> {
        <Link to="/login">
        
        <p className={`${activeTab==="Logout" ? "active" : ""}`}
-        onClick={()=> setActiveTab("Home")}><BsPersonCircle style={{marginRight:"5px", fontSize:"1.1em"}}/>({(window.localStorage.getItem('name'))})</p>
+        onClick={()=> setActiveTab("Home")}><BsPersonCircle style={{marginRight:"5px", fontSize:"1.1em"}}/>({(window.localStorage.getItem('name'))})
+        
+        </p>
+        {/* <p className={`${activeTab==="Logout" ? "active" : ""}`}
+        onClick={()=> setActiveTab("Home")} style={{marginTop:'20px', }}>
+            <Nav>
+            <NavDropdown title={ window.localStorage.getItem("name")}>
+                <NavDropdown.Item>logout</NavDropdown.Item>
+            </NavDropdown>
+            </Nav>
+        
+        </p> */}
        
        </Link>
-       
+      
        
        </div>
 
@@ -89,3 +104,4 @@ useEffect(()=> {
     )
 }
 export default Header; 
+

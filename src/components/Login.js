@@ -40,6 +40,10 @@ export const LoginForm = ({ formSwitcher }) =>{
     }
     
 
+   /**
+    * When the user types in the input field, the value of the input field is set to the state of the
+    * component.
+    */
     const handleOnChange = e => {
 		const { name, value } = e.target;
 
@@ -62,6 +66,13 @@ export const LoginForm = ({ formSwitcher }) =>{
 	};
 
     const navigate = useNavigate();
+  /**
+   * If the username and password are correct, then navigate to the home page and set the name in local
+   * storage.
+   * 
+   * If the username and password are incorrect, then alert the user.
+   * @returns the alert message.
+   */
     const handleOnSubmit = async e => {
 		e.preventDefault();
 
@@ -91,6 +102,7 @@ export const LoginForm = ({ formSwitcher }) =>{
         }
 	};
 
+  /* A react hook that is used to perform side effects in a functional component. */
     useEffect(()=>{
         console.log("use effect watheka");
         window.localStorage.setItem("hidebutton", "no");

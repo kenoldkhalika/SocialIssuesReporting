@@ -21,6 +21,9 @@ const Charts =()=>{
     console.log("DATA SAVED");
   };
 
+/* Getting the number of issues that have the subject of "Child abuse" and storing it in the local
+storage. */
+/* Fetching the data from firebase and storing it in local storage. */
   useEffect(()=>{
       let ref = fireDb.database().ref("issues");
       var c = 0
@@ -31,6 +34,7 @@ const Charts =()=>{
      return c;
   },[])
 
+ /* The above code is fetching data from firebase and storing it in local storage. */
   useEffect(()=>{
     let ref = fireDb.database().ref("issues");
     var gb = 0
@@ -41,6 +45,7 @@ const Charts =()=>{
    window.localStorage.setItem('gender', gb);
 },[])
 
+/* Fetching the data from firebase and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var cl = 0
@@ -51,6 +56,7 @@ useEffect(()=>{
 
 },[])
 
+/* Fetching data from firebase and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var gm = 0;
@@ -86,6 +92,7 @@ ref.orderByChild("assign").equalTo("Admini").on("child_added", (snap) => {
 },[])
 
 //for state
+
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var pe = 0;
@@ -94,6 +101,7 @@ ref.orderByChild("state1").equalTo("pending").on("child_added", (snap) => {
 });
  window.localStorage.setItem('PE', pe);
 },[])
+/* Fetching the data from firebase and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var re = 0;
@@ -112,6 +120,7 @@ ref.orderByChild("state1").equalTo("open").on("child_added", (snap) => {
 },[])
 
 // for analytics
+/* Getting the data from firebase and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var january = 0;
@@ -128,6 +137,7 @@ ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
 // console.log(january);
  window.localStorage.setItem('JANUARY', january);
 },[])
+/* Getting the number of issues that were opened in April. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var april = 0;
@@ -144,6 +154,7 @@ ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
  window.localStorage.setItem('APRIL', april);
 },[])
 
+/* Getting the number of issues that were opened in February. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var februar = 0;
@@ -161,6 +172,7 @@ ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
  console.log(februar);
 },[])
 
+/* Fetching data from firebase and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var mar = 0;
@@ -179,6 +191,7 @@ ref.orderByChild("source").endAt("app").on("child_added", (snap) => {
 },[])
 
 
+/* Getting the number of issues assigned to a user and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var opj = 0;
@@ -194,6 +207,7 @@ useEffect(()=>{
  
 },[])
 
+/* Fetching data from firebase and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var rej = 0;
@@ -208,6 +222,7 @@ useEffect(()=>{
  
 },[])
 
+/* Getting the number of pending issues assigned to J.Msosa and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var pej = 0;
@@ -223,6 +238,7 @@ useEffect(()=>{
 },[])
 
 // for khalika
+/* Getting the number of open issues assigned to K.Khalika and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var opk = 0;
@@ -238,6 +254,7 @@ useEffect(()=>{
  
 },[])
 
+/* Getting the number of resolved issues assigned to K.Khalika and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var rek = 0;
@@ -252,6 +269,7 @@ useEffect(()=>{
  
 },[])
 
+/* Getting the number of pending issues assigned to K.Khalika and storing it in local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("issues");
   var pek = 0;
@@ -277,6 +295,8 @@ ref.orderByChild("priority").equalTo("Low").on("child_added", (snap) => {
  console.log(lo);
 },[])
 
+
+
 useEffect(()=>{
   let ref = fireDb.database().ref("Issues");
   var me = 0;
@@ -285,6 +305,7 @@ ref.orderByChild("priority").equalTo("Medium").on("child_added", (snap) => {
 });
  window.localStorage.setItem('ME', me);
 },[])
+/* Getting the number of issues with the priority of high and storing it in the local storage. */
 useEffect(()=>{
   let ref = fireDb.database().ref("Issues");
   var hi = 0;

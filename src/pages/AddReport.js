@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
   
 
 
+/* Just a variable that is used to set the initial state of the form. */
 const initialState = {
   name: "",
   email: "",
@@ -57,6 +58,12 @@ const AddEdit =()=>{
 
     // Push Function
     toast.configure()
+ /**
+  * It's a function that takes in an event as a parameter and then checks if the name, email and
+  * contact fields are empty. If they are, it displays a toast message. If they aren't, it prevents the
+  * default action of the event, adds the data to the database and then displays a toast message.
+  * @param e - The event object
+  */
   const handleSubmit = (e) => {
       if(!name || !email || !contact ){
         toast('put something',

@@ -33,11 +33,16 @@ class App extends React.Component {
   
   }
 
+/**
+ * The handleClose function is called when the user clicks the close button on the modal. It sets the
+ * show state to false, which closes the modal.
+ */
 handleClose(){
   this.setState({
       show: false
   })
 }
+/* Updating the state of the component. */
 handleSubmit = event => {
   event.preventDefault();
   let name = this.refs.name.value;
@@ -85,6 +90,9 @@ handleSubmit = event => {
   this.refs.uid.value = "";
 };
 
+ /**
+  * ComponentDidMount() is a function that runs after the component is rendered.
+  */
   componentDidMount() {
     this.getUserData();
     this.handleClick();
@@ -96,15 +104,17 @@ handleSubmit = event => {
 
 
 
+ /**
+  * If the state has changed, then write the new state to the database.
+  * @param prevProps - The previous props.
+  * @param prevState - The previous state.
+  */
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
       this.writeUserData();
-      
-    // document.getElementById("button").click();
-
-
+  
     }
-    // this.changePriority();
+   
   }
 
   componentWillUpdate(){
@@ -112,6 +122,7 @@ handleSubmit = event => {
 
   }
 
+  /* Saving the state of the component to the database. */
   writeUserData = () => {
     fireDb.database()
       .ref("/")
@@ -141,6 +152,7 @@ console.log("Total number of days between dates <br>"
 // console.log("Justine");
 }
 
+/* Hiding the button after it is clicked. */
 clickButton = () => {
  
   if (window.localStorage.getItem("hidebutton") =="yes"){
@@ -149,6 +161,8 @@ clickButton = () => {
   }
 }
 
+/* Changing the priority of the issue to Medium or High depending on the number of days the issue has
+been open. */
 changePriority = () =>{
   const { issues } = this.state;
   window.localStorage.setItem("hidebutton", "yes");
@@ -195,6 +209,8 @@ changePriority = () =>{
   // $("#button").hide();
   $('#button').slideUp().delay(5000).fadeOut(5000000);
 }
+ /* The above code is a function that is called when a button is clicked. The function is supposed to
+ update the number of days a ticket has been open. */
   changeNumberDays11 = () =>{
     const { issues } = this.state;
 
@@ -293,6 +309,7 @@ changePriority = () =>{
   //  return k;
   // };
 
+  /* Getting the data from the database and setting the state of the component. */
   getUserData = () => {
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {
@@ -309,6 +326,7 @@ changePriority = () =>{
 //     console.log(snap.val());
 // });
 
+ /* Filtering the data from the state and setting the new state. */
   removeData = issue => {
     const { issues } = this.state;
     const newState = issues.filter(data => {
@@ -317,6 +335,7 @@ changePriority = () =>{
     this.setState({ issues: newState });
   };
  
+ /* Setting the state of the component. */
   handleInputChange = (e)=>{
     this.setState({
       ...this.state,
@@ -328,6 +347,7 @@ changePriority = () =>{
     console.log(event.target.value);
   }
  
+ /* Updating the data in the form. */
   updateData = issue => {
     this.refs.uid.value = issue.uid;
     // this.refs.state1.value = issue.state1;
@@ -351,14 +371,17 @@ changePriority = () =>{
     $('#button').slideUp().delay(5000).fadeOut(5000000);
     $(this).next().slideUp();
   };
+ /* Hiding the form and showing the table. */
   closeIssue =() =>{
     $('#customers').slideDown();
     $('#form1').hide().delay(100).fadeOut(5000);
   }
+ /* Setting the local storage item 'data' to the value of the uid of the issue. */
   forAdmin = issue =>{
     window.localStorage.setItem('data', issue.uid);
   }
 
+ /* Changing the state of the issue from resolved to open. */
   changeIssueState = issue =>{
     window.localStorage.setItem('data', issue.uid);
     const user = window.localStorage.getItem('name');
@@ -398,12 +421,14 @@ changePriority = () =>{
 
   }
   };
+ 
   onTodoChange(value){
     this.setState({
          name: value
     });
 }
 
+/* A function that is being called on the click of a button. */
 handleClick = () => {
   $('.formButton').on('click', function(){
      $('#form1').slideDown().delay(100).fadeOut(5000);

@@ -11,6 +11,7 @@ class Visualization extends React.Component{
             issues: [],
         }
     }
+  /* A function that is called when the form is submitted. */
     handleSubmit = event => {
       event.preventDefault();
       let priority = this.refs.priority.value;
@@ -41,6 +42,7 @@ class Visualization extends React.Component{
   }
 
 
+ /* Saving the data to the database. */
   writeUserData = () => {
     fireDb.database()
       .ref("/")
@@ -48,6 +50,7 @@ class Visualization extends React.Component{
     console.log("DATA SAVED");
   };
   
+ /* Getting the data from the database. */
   getUserData = () => {
     let ref = fireDb.database().ref("/");
     ref.on("value", snapshot => {
@@ -56,6 +59,7 @@ class Visualization extends React.Component{
       this.setState(state);
     });
   };
+ /* Getting the data from the database. */
   getUserData1 = () => {
     let ref = fireDb.database().ref("issues");
     // ref.on("value", snapshot => {

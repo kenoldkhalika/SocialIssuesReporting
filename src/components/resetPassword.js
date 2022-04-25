@@ -4,6 +4,11 @@ import {Button} from "react-bootstrap";
 import { Container, Row, Col, Form, FormGroup, FormLabel, FormControl } from "react-bootstrap";
 
 
+/**
+ * It's a function that takes a function as a prop and returns a form that takes an email and sends a
+ * pin to the email.
+ * @returns The return statement is used to return a value from a function.
+ */
 export const ResetPassword= ({formSwitcher}) =>{
 
     const [email, setEmail] = useState("");
