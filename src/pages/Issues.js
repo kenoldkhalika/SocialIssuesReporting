@@ -87,9 +87,25 @@ handleSubmit = event => {
   componentDidMount() {
     this.getUserData();
     this.handleClick();
-    this.getNumberOfDays();
+    // this.changeNumberDays11();
+    // document.getElementById("button").click();
     // this.getUserData1();
   }
+
+
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState !== this.state) {
+      this.writeUserData();
+    }
+  }
+
+  writeUserData = () => {
+    fireDb.database()
+      .ref("/")
+      .set(this.state);
+    console.log("DATA SAVED");
+  };
 
   getNumberOfDays = () =>{
     // JavaScript program to illustrate
@@ -112,19 +128,85 @@ console.log("Total number of days between dates <br>"
 			+ Difference_In_Days);
 // console.log("Justine");
 }
+  changeNumberDays11 = () =>{
+    const { issues } = this.state;
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState !== this.state) {
-      this.writeUserData();
-    }
+    issues.map(issue => {
+ 
+        
+        const changeNumberDays = issue => {
+          let issueId = issue.uid;
+         
+          let issueSubject = issue.subject;
+          let IssueState = issue.state1;
+          
+        
+          const current = new Date();
+          const dateResolved = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
+          const Difference_In_Time1 = `${current.getTime()}`;
+          const Difference_In_Time2 = issue.date - Difference_In_Time1;
+          var date1 = new Date(dateResolved.toString());
+          var date2 = new Date(issue.openDate.toString());
+          var time1 = date1.getTime() - date2.getTime();
+          console.log(Difference_In_Time1);
+          var Difference_In_Days = time1 / (1000 * 60 * 60 * 24);
+
+
+          var date1 = new Date(issue.openDate.toString());
+          var date2 = new Date(dateResolved.toString());
+
+          // To calculate the time difference of two dates
+          var Difference_In_Time = date2.getTime() - date1.getTime();
+
+          // To calculate the no. of days between two dates
+          var Difference_In_Days1 = Difference_In_Time / (1000 * 3600 * 24);
+          let numberDays = Difference_In_Days1.toString();
+          let issueName = issue.name;
+      
+          
+          let issueContact = issue.contact;
+          let issueEmail = issue.email;
+          let issueLocation = issue.location;
+      
+          let issueDate = issue.date;
+          let issueDescription = issue.issueDescription;
+          let issuePriority = issue.priority;
+          let issueSource = issue.source;
+          let issueAssign = issue.assign;
+          let issueState = issue.state1;
+          console.log(issue.uid);
+          const { issues } = this.state;
+          const devIndex = issues.findIndex(data => {
+              return data.uid === issueId;
+            });
+           
+            issues[devIndex].name = issueName;
+            issues[devIndex].contact = issueContact;
+            issues[devIndex].email = issueEmail;
+            issues[devIndex].subject = issueSubject;
+            issues[devIndex].email = issueEmail;
+            issues[devIndex].location = issueLocation;
+            issues[devIndex].date = issueDate;
+            issues[devIndex].numberDays = numberDays;
+            issues[devIndex].issueDescription = issueDescription;
+            issues[devIndex].priority = issuePriority;
+            issues[devIndex].source = issueSource;
+            issues[devIndex].subject = issueSubject;
+      
+            issues[devIndex].state1 = IssueState;
+            issues[devIndex].assign = issueAssign;
+            return this.setState({ issues });
+      
+      
+      
+          };
+          changeNumberDays(issue)
+
+    })
+    // $("#button").hide();
+    // $('#button').slideUp().delay(5000).fadeOut(5000000);
   }
-
-  writeUserData = () => {
-    fireDb.database()
-      .ref("/")
-      .set(this.state);
-    console.log("DATA SAVED");
-  };
+  
   // getUserData1 = () => {
   //   let ref = fireDb.database().ref("issues");
   //   // ref.on("value", snapshot => {
@@ -206,6 +288,7 @@ console.log("Total number of days between dates <br>"
   forAdmin = issue =>{
     window.localStorage.setItem('data', issue.uid);
   }
+
   changeIssueState = issue =>{
     window.localStorage.setItem('data', issue.uid);
     const user = window.localStorage.getItem('name');
@@ -290,6 +373,7 @@ handleClick = () => {
           </div>
           <div className="row">          
                 </div>  
+                {/* <Button id="button" onClick={(e) => this.changeNumberDays11(e)}>Refresh Priority</Button> */}
                 < AddOption />
                 </div>             
           <div className="row"> 
@@ -335,7 +419,7 @@ handleClick = () => {
          <td> 
             <ul class="list-inline m-0">
               <li class="list-inline-item">  
-              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+              <a href="/issue-details" class="fa fa-table"  onClick={(e) => {this.changeIssueState(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
 
               {/* <Link to="/issue-details" >
                 <div  
@@ -385,7 +469,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table"  onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -409,7 +493,7 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forAdmin(issue)}>
+         onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}>
             <GrView></GrView> </a>
          </li>
 
@@ -463,7 +547,7 @@ handleClick = () => {
          <td> 
             <ul class="list-inline m-0">
               <li class="list-inline-item">  
-              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+              <a href="/issue-details" class="fa fa-table"  onClick={(e) => {this.changeIssueState(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
 
               {/* <Link to="/issue-details" >
                 <div  
@@ -513,7 +597,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table"  onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -537,7 +621,7 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forAdmin(issue)}>
+         onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}>
             <GrView></GrView> </a>
          </li>
 
@@ -590,7 +674,7 @@ handleClick = () => {
          <td> 
             <ul class="list-inline m-0">
               <li class="list-inline-item">  
-              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+              <a href="/issue-details" class="fa fa-table"  onClick={(e) => {this.changeIssueState(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
 
               {/* <Link to="/issue-details" >
                 <div  
@@ -640,7 +724,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table" onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -664,7 +748,7 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forAdmin(issue)}>
+          onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}>
             <GrView></GrView> </a>
          </li>
 
@@ -718,7 +802,7 @@ handleClick = () => {
          <td> 
             <ul class="list-inline m-0">
               <li class="list-inline-item">  
-              <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.changeIssueState(issue)}><GrView></GrView> </a>
+              <a href="/issue-details" class="fa fa-table" onClick={(e) => {this.changeIssueState(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
 
               {/* <Link to="/issue-details" >
                 <div  
@@ -768,7 +852,7 @@ handleClick = () => {
     <td> 
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
-         <a href="/issue-details" class="fa fa-table" onClick={(e)=>this.forAdmin(issue)}><GrView></GrView> </a>
+         <a href="/issue-details" class="fa fa-table"  onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}><GrView></GrView> </a>
          </li>
          </ul>        
        </td>
@@ -792,7 +876,8 @@ handleClick = () => {
        <ul class="list-inline m-0">
          <li class="list-inline-item">  
          <a href="/issue-details" class="fa fa-table"
-          onClick={(e)=>this.forAdmin(issue)}>
+         onClick={(e) => {this.forAdmin(issue);  this.changeNumberDays11(e); }}
+         >
             <GrView></GrView> </a>
          </li>
 

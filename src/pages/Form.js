@@ -64,7 +64,7 @@ class IssueForm extends React.Component {
     let uid = this.refs.uid.value;
     let message = "Your issue will be handled soon";
     const current = new Date();
-    const dateOpened = `${current.getDate()}/ ${current.getMonth()+1}/${current.getFullYear()}`;
+    const dateOpened = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
     let openDate = dateOpened;
     let resolvedDate = " not yet";
     let repoterMessage = "  ";

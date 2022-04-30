@@ -264,6 +264,13 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
     
   ];
 
+  const dataPrio = [
+    { name: 'Low', value: parseInt(window.localStorage.getItem("LO")) },
+    { name: 'Medium', value: parseInt(window.localStorage.getItem("ME"))},
+    { name: 'High', value: parseInt(window.localStorage.getItem("HI")) },
+    
+  ];
+
   const data1 = [
     {name: 'Pending issues', value: window.localStorage.getItem("PE"), },
     { name: 'Open issues', value: window.localStorage.getItem("OP"),},
@@ -289,9 +296,9 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
   ];
 
   const priorityData = [
-    {name: 'Low', Issues: 7,},
-    { name: 'Medium', Issues: parseInt(window.localStorage.getItem("ME")),},
-    {name: 'High', Issues: parseInt(window.localStorage.getItem("HI")),},  
+    {name: 'Low', Issues: 7},
+    { name: 'Medium', Issues: parseInt(window.localStorage.getItem("ME"))},
+    {name: 'High', Issues: parseInt(window.localStorage.getItem("HI"))},  
   ];
   if (window.localStorage.getItem('name') === 'Admin'){
     return (
@@ -323,29 +330,27 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
     </ResponsiveContainer> </div>
     <div className='col-6'>
       <h5>Issue Status</h5>
-    <ResponsiveContainer width="100%" aspect={3}>
-        <ComposedChart
-          layout="vertical"
-          width={500}
-          height={400}
-          data={data1}
-          margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: 20,
-          }}
-        >
-          <CartesianGrid stroke="#f5f5f5" />
-          <XAxis type="number" />
-          <YAxis dataKey="name" type="category" scale="band" allowDecimals={false}/>
-          <Tooltip />
-          <Legend />
-          {/* <Area dataKey="amt" fill="#8884d8" stroke="#8884d8" /> */}
-          <Bar dataKey="value" barSize={20} fill="#413ea0" />
-          {/* <Line dataKey="uv" stroke="#ff7300" /> */}
-        </ComposedChart>
-      </ResponsiveContainer>
+      <ResponsiveContainer width="100%" aspect={3}>
+      <BarChart
+        width={500}
+        height={300}
+        data={data1}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        barSize={20}
+      >
+        <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+        <YAxis allowDecimals={false}/>
+        <Tooltip />
+        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="value" fill="#8884d8" background={{ fill: '#eee' }} />
+      </BarChart>
+    </ResponsiveContainer>
        </div>
       
      </div>
@@ -380,7 +385,7 @@ ref.orderByChild("priority").equalTo("High").on("child_added", (snap) => {
             dataKey="value"
             startAngle={180}
             endAngle={0}
-            data={priorityData}
+            data={dataPrio}
             cx="50%"
             cy="50%"
             outerRadius={80}
