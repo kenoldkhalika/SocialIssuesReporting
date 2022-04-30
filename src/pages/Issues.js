@@ -128,6 +128,38 @@ console.log("Total number of days between dates <br>"
 			+ Difference_In_Days);
 // console.log("Justine");
 }
+
+changePriority = () =>{
+  const { issues } = this.state;
+  
+  issues.map(issue => {
+      if (parseInt(issue.numberDays) >= 5){
+
+              
+      const changePriority1 = issue => {
+        let issueId = issue.uid;
+        let issuePriority = "High";
+  
+        console.log(issue.uid);
+        const { issues } = this.state;
+        const devIndex = issues.findIndex(data => {
+            return data.uid === issueId;
+          });
+         
+          issues[devIndex].priority = issuePriority;
+          return this.setState({ issues });
+    
+    
+    
+        };
+        changePriority1(issue)
+      }
+
+
+  })
+  // $("#button").hide();
+  $('#button').slideUp().delay(5000).fadeOut(5000000);
+}
   changeNumberDays11 = () =>{
     const { issues } = this.state;
 
@@ -280,6 +312,9 @@ console.log("Total number of days between dates <br>"
     $(this).first().slideUp();
     $('#customers').slideUp().delay(5000).fadeOut(5000000);
     $(this).next().slideUp();
+
+    $('#button').slideUp().delay(5000).fadeOut(5000000);
+    $(this).next().slideUp();
   };
   closeIssue =() =>{
     $('#customers').slideDown();
@@ -371,9 +406,9 @@ handleClick = () => {
           <div className="row">
             
           </div>
-          <div className="row">          
+          <div className="row" style={{ paddingTop:"10px" }}>          
                 </div>  
-                {/* <Button id="button" onClick={(e) => this.changeNumberDays11(e)}>Refresh Priority</Button> */}
+                <Button id="button" onClick={(e) => this.changePriority(e)} style={{background:"#563e7c", paddingTop:"10px" }}>Refresh Priority</Button>
                 < AddOption />
                 </div>             
           <div className="row"> 
